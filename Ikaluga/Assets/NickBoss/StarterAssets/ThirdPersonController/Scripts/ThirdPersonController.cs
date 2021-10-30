@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -24,6 +24,8 @@ namespace StarterAssets
 		public float RotationSmoothTime = 0.12f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+		[Tooltip("How quickly the Player fires projectiles")]
+		public float FireRate = 1f;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
