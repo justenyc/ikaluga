@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 #endif
@@ -9,6 +10,7 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
 	[RequireComponent(typeof(CharacterController))]
+	[RequireComponent(typeof(HealthPlayer))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 	[RequireComponent(typeof(PlayerInput))]
 #endif
@@ -25,7 +27,12 @@ namespace StarterAssets
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
 		[Tooltip("How quickly the Player fires projectiles")]
-		public float FireRate = 1f;
+		public float fireRate = 1f;
+		public GameObject projectile;
+		private bool shootPressed = false;
+		public float shootCD = 0;
+		public float playerDamage = 1f;
+		HealthPlayer health;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -103,6 +110,8 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+
+			health = this.GetComponent<HealthPlayer>();
 		}
 
 		private void Start()
@@ -124,10 +133,11 @@ namespace StarterAssets
 		private void Update()
 		{
 			_hasAnimator = TryGetComponent(out _animator);
-			
+
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			Shoot();
 		}
 
 		private void LateUpdate()
@@ -325,16 +335,14 @@ namespace StarterAssets
 
 		void ChangeColor()
 		{
-			if (ColorInts == 0)
+			health.bright = !health.bright;
+			if (health.bright)
 			{
-
-				myRenderer.material.SetColor("_BaseColor", Color.red);
-				ColorInts = 1;
+				myRenderer.material.SetColor("_BaseColor", Color.white);
 			}
-			else if (ColorInts == 1)
+			else
 			{
-				myRenderer.material.SetColor("_BaseColor", Color.blue);
-				ColorInts = 0;
+				myRenderer.material.SetColor("_BaseColor", Color.black);
 			}
 		}
 
@@ -346,5 +354,29 @@ namespace StarterAssets
 			}
 		}
 
+		public void OnShoot(InputValue value)
+		{
+			shootPressed = value.isPressed;
+		}
+
+		void Shoot()
+        {
+			shootCD = Mathf.Clamp(shootCD - Time.deltaTime, -3, fireRate);
+
+			if(shootPressed && shootCD <= 0)
+            {
+				shootCD = fireRate;
+				this.GetComponent<IKControl>().ikActive = true;
+				GameObject newBullet = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z) + Camera.main.transform.forward * 1, Camera.main.transform.rotation);
+				Projectile p = newBullet.GetComponent<Projectile>();
+				p.ChangeColor(health.bright);
+				p.ChangeDamage(playerDamage);
+				p.originObject = this.gameObject;
+            }
+			else if(shootCD == -3)
+            {
+				this.GetComponent<IKControl>().ikActive = false;
+			}
+		}
 	}
 }
