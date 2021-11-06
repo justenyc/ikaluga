@@ -12,9 +12,9 @@ public class Projectile : MonoBehaviour
 
     [Space(10)]
     public Color lightMainColor;
-    public Color lightEmissiveColor;
+    [ColorUsage(true, true)] public Color lightEmissiveColor;
     public Color darkMainColor;
-    public Color darkEmissiveColor;
+    [ColorUsage(true, true)] public Color darkEmissiveColor;
 
     MeshRenderer mr;
 

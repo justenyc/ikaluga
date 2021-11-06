@@ -12,9 +12,9 @@ TagManager:
   - AimIk
   - Water
   - UI
-  - Bullet
-  - 
-  - 
+  - EnemyBullet
+  - MainPlayer
+  - PlayerBullet
   - 
   - 
   - 
