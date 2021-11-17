@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HealthPlayer : Health
 {
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    /*void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        Debug.Log("HealthPlayer: " + hit.collider.name);
         try
         {
             Projectile p = hit.collider.GetComponent<Projectile>();
@@ -19,5 +20,5 @@ public class HealthPlayer : Health
         {
 
         }
-    }
+    }*/
 }

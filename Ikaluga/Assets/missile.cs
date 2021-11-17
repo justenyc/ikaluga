@@ -39,11 +39,12 @@ public class missile : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Missile: " + collision.collider.name);
         if (collision.collider.gameObject != this.originObject)
         {
             try
             {
-                Health collidedHp = collision.collider.GetComponent<Health>();
+                HealthPlayer collidedHp = collision.collider.GetComponent<HealthPlayer>();
                 if (collidedHp.bright != this.bright)
                 {
                     collidedHp.DealDamage(damage);
@@ -52,7 +53,7 @@ public class missile : Projectile
             }
             catch
             {
-
+                
             }
         }
     }

@@ -59,6 +59,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Projectile: " + collision.collider.gameObject);
         if (collision.collider.gameObject != this.originObject)
         {
             try
@@ -83,7 +84,7 @@ public class Projectile : MonoBehaviour
             }
             catch
             {
-
+                Destroy(this.gameObject);
             }
         }
     }
