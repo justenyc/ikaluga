@@ -370,6 +370,17 @@ namespace StarterAssets
 
 			if(shootPressed && shootCD <= 0)
             {
+				AudioSource aS = this.GetComponent<AudioSource>();
+				SoundEffects se = FindObjectOfType<SoundEffects>();
+
+				if (this.GetComponent<HealthPlayer>().bright)
+					aS.pitch = Random.Range(2f, 2.2f);
+				else
+					aS.pitch = Random.Range(1, 1.2f);
+
+				aS.volume = 0.1f;
+				aS.PlayOneShot(se.GetClip("IkalugaBullet"));
+
 				shootCD = fireRate;
 				this.GetComponent<IKControl>().ikActive = true;
 				GameObject newBullet = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z) + Camera.main.transform.forward * 1, Camera.main.transform.rotation);

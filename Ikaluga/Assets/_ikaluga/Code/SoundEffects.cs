@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class SoundEffects : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioClip[] soundEffects;
+    Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
+
+    private void Awake()
     {
-        
+        foreach (AudioClip ac in soundEffects)
+        {
+            sounds.Add(ac.name, ac);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public AudioClip GetClip(string name)
     {
-        
+        return sounds[name];
     }
 }

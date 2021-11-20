@@ -4,6 +4,9 @@
     "m_ObjectId": "37b6a887bf1b4d47aecf2a333311ddb8",
     "m_Properties": [
         {
+            "m_Id": "6927c85d2adc4188bed8caad752f0076"
+        },
+        {
             "m_Id": "82dc2b6e72f947fca85251722d37daaf"
         },
         {
@@ -14,9 +17,6 @@
         },
         {
             "m_Id": "b873c7afc1bd413f9c55ec0b23a74b19"
-        },
-        {
-            "m_Id": "6927c85d2adc4188bed8caad752f0076"
         },
         {
             "m_Id": "0f5035f91a40439391f03e624d08ed8c"
