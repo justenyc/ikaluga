@@ -1702,6 +1702,36 @@ Transform:
   m_Father: {fileID: 8818194238794709845}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &305154494905192334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161355670399482231}
+  m_Layer: 7
+  m_Name: PlayerSoundEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161355670399482231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305154494905192334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3893294197879345259}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &358413512488087282
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,6 +6519,11 @@ PrefabInstance:
 --- !u!4 &543450651602065211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 05f3d3333d21fb04db8dbe2b76fb7dcf, type: 3}
+  m_PrefabInstance: {fileID: 2131718352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4469598166764449199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4469598168559132031, guid: 05f3d3333d21fb04db8dbe2b76fb7dcf, type: 3}
   m_PrefabInstance: {fileID: 2131718352}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2213809936502928440 stripped

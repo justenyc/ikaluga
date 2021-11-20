@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  lifetime: 15
+  lifetime: 12
   bright: 1
   damage: 10
   originObject: {fileID: 0}
@@ -150,6 +150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 1000
+  rotateTime: 12
+  minTime: 0
+  maxTime: 0
+  stopTime: 0
 --- !u!54 &1762384764
 Rigidbody:
   m_ObjectHideFlags: 0
