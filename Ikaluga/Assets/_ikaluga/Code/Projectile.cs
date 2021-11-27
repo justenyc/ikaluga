@@ -80,6 +80,10 @@ public class Projectile : MonoBehaviour
                         collidedHp.DealDamage(damage);
                     }
                 }
+                else
+                {
+                    collidedHp.DealDamage(0);
+                }
                 Destroy(this.gameObject);
             }
             catch
