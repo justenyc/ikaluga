@@ -12,11 +12,11 @@ public class Projectile : MonoBehaviour
 
     [Space(10)]
     public Color lightMainColor;
-    public Color lightEmissiveColor;
+    [ColorUsage(true, true)] public Color lightEmissiveColor;
     public Color darkMainColor;
-    public Color darkEmissiveColor;
+    [ColorUsage(true, true)] public Color darkEmissiveColor;
 
-    MeshRenderer mr;
+    public MeshRenderer mr;
 
     // Update is called once per frame
     private void Start()
@@ -58,7 +58,8 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {         
+    {
+        Debug.Log("Projectile: " + collision.collider.gameObject);
         if (collision.collider.gameObject != this.originObject)
         {
             try
@@ -66,13 +67,24 @@ public class Projectile : MonoBehaviour
                 Health collidedHp = collision.collider.GetComponent<Health>();
                 if (collidedHp.bright != bright)
                 {
-                    collidedHp.DealDamage(damage);
+                    if (collidedHp.GetComponent<missile>() != null && this.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
+                    {
+                        collidedHp.DealDamage(0);
+                    }
+                    else if(collidedHp.GetComponent<missile>() != null && this.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
+                    {
+                        collidedHp.DealDamage(damage);
+                    }
+                    else if (collidedHp.GetComponent<missile>() == null)
+                    {
+                        collidedHp.DealDamage(damage);
+                    }
                 }
                 Destroy(this.gameObject);
             }
             catch
             {
-
+                Destroy(this.gameObject);
             }
         }
     }

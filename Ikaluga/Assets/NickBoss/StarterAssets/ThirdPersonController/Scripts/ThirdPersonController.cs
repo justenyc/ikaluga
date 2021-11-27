@@ -16,9 +16,13 @@ namespace StarterAssets
 #endif
 	public class ThirdPersonController : MonoBehaviour
 	{
+		[ColorUsage(true, true)] public Color brightColor;
+		[ColorUsage(true, true)] public Color darkColor;
+		public Material playerMaterial;
+		public Material playerCapeMaterial;
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
-		public float MoveSpeed = 2.0f;
+		public float MoveSpeed = 5.335f;
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 5.335f;
 		[Tooltip("How fast the character turns to face movement direction")]
@@ -100,7 +104,6 @@ namespace StarterAssets
 
 		private bool _hasAnimator;
 
-		private SkinnedMeshRenderer myRenderer;
 		private int ColorInts;
 
 		private void Awake()
@@ -120,7 +123,6 @@ namespace StarterAssets
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 
-			myRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
 			ColorInts = 0;
 
 			AssignAnimationIDs();
@@ -128,6 +130,7 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			ChangeColor();
 		}
 
 		private void Update()
@@ -338,11 +341,13 @@ namespace StarterAssets
 			health.bright = !health.bright;
 			if (health.bright)
 			{
-				myRenderer.material.SetColor("_BaseColor", Color.white);
+				playerCapeMaterial.SetColor("Emission_Color", brightColor);
+				playerMaterial.SetColor("Emission_Color", brightColor);
 			}
 			else
 			{
-				myRenderer.material.SetColor("_BaseColor", Color.black);
+				playerCapeMaterial.SetColor("Emission_Color", darkColor);
+				playerMaterial.SetColor("Emission_Color", darkColor);
 			}
 		}
 
@@ -365,6 +370,17 @@ namespace StarterAssets
 
 			if(shootPressed && shootCD <= 0)
             {
+				AudioSource aS = this.GetComponent<AudioSource>();
+				SoundEffects se = FindObjectOfType<SoundEffects>();
+
+				if (this.GetComponent<HealthPlayer>().bright)
+					aS.pitch = Random.Range(2f, 2.2f);
+				else
+					aS.pitch = Random.Range(1, 1.2f);
+
+				aS.volume = 0.1f;
+				aS.PlayOneShot(se.GetClip("IkalugaBullet"));
+
 				shootCD = fireRate;
 				this.GetComponent<IKControl>().ikActive = true;
 				GameObject newBullet = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z) + Camera.main.transform.forward * 1, Camera.main.transform.rotation);

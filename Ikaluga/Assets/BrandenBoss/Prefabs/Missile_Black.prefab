@@ -12,10 +12,12 @@ GameObject:
   - component: {fileID: 7924797881503933842}
   - component: {fileID: 7924797881503933843}
   - component: {fileID: 7924797881503933840}
-  - component: {fileID: 7924797881503933841}
-  - component: {fileID: 4596866406683616136}
-  m_Layer: 6
-  m_Name: Bullet
+  - component: {fileID: 7419010588653038995}
+  - component: {fileID: 61352618301783599}
+  - component: {fileID: 561931491}
+  - component: {fileID: 1885482899}
+  m_Layer: 0
+  m_Name: Missile_Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 7924797881503933846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.9336169, y: 1.6632514, z: -3.7674813}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -42,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7924797881503933846}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 68a66fb5a71f8204a8dcb613c97d1fa8, type: 3}
 --- !u!23 &7924797881503933843
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -95,9 +97,9 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7924797881503933841
+--- !u!114 &7419010588653038995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,19 +108,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 7924797881503933846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe9d8ece795fb54f80a75b502a4971a, type: 3}
+  m_Script: {fileID: 11500000, guid: 32b113389ae24094893bb50cdb04c6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
-  lifetime: 1
-  bright: 1
-  damage: 1
+  moveSpeed: 5
+  lifetime: 12
+  bright: 0
+  damage: 10
   originObject: {fileID: 0}
   lightMainColor: {r: 1, g: 1, b: 1, a: 0}
   lightEmissiveColor: {r: 1, g: 1, b: 0, a: 0}
   darkMainColor: {r: 0, g: 0, b: 0, a: 0}
   darkEmissiveColor: {r: 1, g: 0, b: 1, a: 0}
---- !u!54 &4596866406683616136
+  mr: {fileID: 0}
+  upTime: 3
+--- !u!114 &61352618301783599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924797881503933846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac1b1663796a094ca64ef0f3bbdbcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 0
+  bright: 0
+--- !u!114 &561931491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924797881503933846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9063691f4990fc846a72ca7bc2256416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 1000
+  rotateTime: 12
+  minTime: 0
+  maxTime: 0
+  stopTime: 0
+--- !u!54 &1885482899
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

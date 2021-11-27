@@ -8,14 +8,15 @@ public abstract class Health : MonoBehaviour
     public float currentHealth;
     public bool bright = false;
 
-    void Start()
+    public void Start()
     {
         currentHealth = maxHealth;
     }
 
-    public void DealDamage(float value)
+    public virtual void DealDamage(float value)
     {
         currentHealth -= value;
+        Debug.Log(this.name + " Current Health = " + currentHealth);
         if (currentHealth <= 0)
             Die();
     }
