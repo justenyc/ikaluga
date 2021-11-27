@@ -10,19 +10,25 @@ public class mortar : MonoBehaviour
 
     public Transform shotPoint;
     public GameObject mortarPreFab;
+
+    private PhaseManager pm;
     // Start is called before the first frame update
     void Start()
     {
         shotDelay = Random.Range(minDelay, maxDelay);
+        pm = FindObjectOfType<PhaseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        shotDelay -= Time.deltaTime;
-        if (shotDelay <= 0)
+        if(pm.mortarsOn == true)
         {
-            FireMortar();
+            shotDelay -= Time.deltaTime;
+            if (shotDelay <= 0)
+            {
+                FireMortar();
+            }
         }
     }
 
@@ -30,5 +36,9 @@ public class mortar : MonoBehaviour
     {
         Instantiate(mortarPreFab, shotPoint.position, shotPoint.rotation);
         shotDelay = Random.Range(minDelay, maxDelay);
+    }
+    private void OnDestroy()
+    {
+        pm.listOfMortars.Remove(this);
     }
 }

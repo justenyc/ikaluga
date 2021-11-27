@@ -11,19 +11,25 @@ public class missileaim : MonoBehaviour
 
     public Transform shotPoint;
     public GameObject missile;
+
+    private PhaseManager pm;
     // Start is called before the first frame update
     void Start()
     {
         shotDelay = Random.Range(minDelay, maxDelay);
+        pm = FindObjectOfType<PhaseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        shotDelay -= Time.deltaTime;
-        if (shotDelay <= 0)
+        if(pm.missilesOn == true)
         {
-            FireMissile();
+            shotDelay -= Time.deltaTime;
+            if (shotDelay <= 0)
+            {
+                FireMissile();
+            }
         }
     }
 
@@ -31,5 +37,9 @@ public class missileaim : MonoBehaviour
     {
         Instantiate(missile, shotPoint.position, shotPoint.rotation);
         shotDelay = Random.Range(minDelay, maxDelay);
+    }
+    private void OnDestroy()
+    {
+        pm.listOfMissiles.Remove(this);
     }
 }

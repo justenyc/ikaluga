@@ -27,7 +27,7 @@ public class mortaraim : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         mr = this.GetComponent<MeshRenderer>();
         Destroy(this.gameObject, lifetime);
-        ChangeColor(bright); 
+        ChangeColor(bright);
     }
 
     void Update()
