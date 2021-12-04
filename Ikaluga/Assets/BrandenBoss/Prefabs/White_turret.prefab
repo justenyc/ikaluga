@@ -681,6 +681,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: f5762a6145f4b0540aebaa0e0014ce51, type: 2}
   - {fileID: 2100000, guid: 0ec32ce89fc3e324c9a79683535b519b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -756,3 +757,5 @@ MonoBehaviour:
   shotPoint: {fileID: 6048508617417407386}
   minDelay: 0.5
   maxDelay: 1.5
+  startMinDelay: 0
+  startMaxDelay: 0
