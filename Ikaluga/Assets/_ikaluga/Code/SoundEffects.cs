@@ -17,6 +17,7 @@ public class SoundEffects : MonoBehaviour
 
     public AudioClip GetClip(string name)
     {
+        Debug.Log(name);
         return sounds[name];
     }
 }

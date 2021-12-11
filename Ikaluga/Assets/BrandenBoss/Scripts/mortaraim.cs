@@ -13,6 +13,8 @@ public class mortaraim : MonoBehaviour
     private Transform target;
     private Vector3 trackedPosition;
 
+    public GameObject particles;
+
     [Space(10)]
     public Color lightMainColor;
     [ColorUsage(true, true)] public Color lightEmissiveColor;
@@ -44,7 +46,7 @@ public class mortaraim : MonoBehaviour
         else
         {
             float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, trackedPosition + Vector3.up, step);
+            transform.position = Vector3.MoveTowards(transform.position, trackedPosition - Vector3.up, step);
         }
     }
 
@@ -108,5 +110,10 @@ public class mortaraim : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(particles, this.transform.position, this.transform.rotation);
     }
 }

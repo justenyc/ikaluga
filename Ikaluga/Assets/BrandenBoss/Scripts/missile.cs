@@ -8,10 +8,14 @@ public class missile : Projectile
 
     private Transform target;
     private SphereCollider sc;
+    public GameObject particles;
+    private HealthBoss hb;
 
     // Update is called once per frame
     private void Start()
     {
+        hb = this.GetComponent<HealthBoss>();
+        hb.deathEvent += Die;
         sc = GetComponent<SphereCollider>();
         sc.enabled = false;
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -41,6 +45,11 @@ public class missile : Projectile
     }
 
     //Called by instantiating object
+    void Die()
+    {
+        Instantiate(particles, this.transform.position, this.transform.rotation);
+        hb.deathEvent -= Die;
+    }
 
 
     private void OnCollisionEnter(Collision collision)
@@ -66,5 +75,10 @@ public class missile : Projectile
                 
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(particles, this.transform.position, this.transform.rotation);
     }
 }

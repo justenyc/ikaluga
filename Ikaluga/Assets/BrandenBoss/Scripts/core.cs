@@ -5,10 +5,14 @@ using UnityEngine;
 public class core : MonoBehaviour
 {
     private PhaseManager pm;
+    private HealthBoss hb;
+    public GameObject deathParticle;
 
     // Start is called before the first frame update
     void Start()
     {
+        hb = this.GetComponent<HealthBoss>();
+        hb.deathEvent += Die;
         pm = FindObjectOfType<PhaseManager>();
     }
 
@@ -17,6 +21,12 @@ public class core : MonoBehaviour
     {
         
     }
+    void Die()
+    {
+        Instantiate(deathParticle, this.transform.position, this.transform.rotation);
+        hb.deathEvent -= Die;
+    }
+
     private void OnDestroy()
     {
         pm.listOfCores.Remove(this);

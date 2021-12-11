@@ -103,6 +103,7 @@ MonoBehaviour:
   damage: 10
   trackTime: 1.5
   originObject: {fileID: 0}
+  particles: {fileID: 9221979518356943653, guid: bcff561fd39eace4f956dc581b36784e, type: 3}
   lightMainColor: {r: 1, g: 1, b: 1, a: 0}
   lightEmissiveColor: {r: 1, g: 1, b: 0, a: 0}
   darkMainColor: {r: 0, g: 0, b: 0, a: 0}

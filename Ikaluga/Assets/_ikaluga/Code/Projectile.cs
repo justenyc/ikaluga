@@ -36,8 +36,8 @@ public class Projectile : MonoBehaviour
         {
             Destroy(this.gameObject, 1f);
             this.GetComponent<MeshRenderer>().enabled = false;
-            this.GetComponent<SphereCollider>().enabled = false;
-            this.GetComponent<Rigidbody>().isKinematic = true;
+            this.GetComponent<Collider>().enabled = false;
+            //this.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 

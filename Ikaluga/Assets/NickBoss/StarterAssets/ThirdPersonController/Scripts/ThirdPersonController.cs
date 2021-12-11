@@ -358,7 +358,7 @@ namespace StarterAssets
 			if(shootPressed && shootCD <= 0)
             {
 				AudioSource aS = this.GetComponent<AudioSource>();
-				SoundEffects se = FindObjectOfType<SoundEffects>();
+				SoundEffects se = GetComponentInChildren<SoundEffects>();
 
 				if (this.GetComponent<HealthPlayer>().bright)
 					aS.pitch = Random.Range(2f, 2.2f);

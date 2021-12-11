@@ -10,11 +10,15 @@ public class mortar : MonoBehaviour
 
     public Transform shotPoint;
     public GameObject mortarPreFab;
+    private HealthBoss hb;
+    public GameObject deathParticle;
 
     private PhaseManager pm;
     // Start is called before the first frame update
     void Start()
     {
+        hb = this.GetComponent<HealthBoss>();
+        hb.deathEvent += Die;
         shotDelay = Random.Range(minDelay, maxDelay);
         pm = FindObjectOfType<PhaseManager>();
     }
@@ -31,7 +35,11 @@ public class mortar : MonoBehaviour
             }
         }
     }
-
+    void Die()
+    {
+        Instantiate(deathParticle, this.transform.position, this.transform.rotation);
+        hb.deathEvent -= Die;
+    }
     void FireMortar()
     {
         Instantiate(mortarPreFab, shotPoint.position, shotPoint.rotation);

@@ -8,6 +8,7 @@ public class turret : MonoBehaviour
     public GameObject bullet;
     public Transform shotPoint;
     private PhaseManager pm;
+    public GameObject deathParticle;
 
     private float shotDelay; //delay between shots
     public float minDelay;
@@ -15,11 +16,14 @@ public class turret : MonoBehaviour
 
     public float startMinDelay;
     public float startMaxDelay;
+    private HealthBoss hb;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        hb = this.GetComponent<HealthBoss>();
+        hb.deathEvent += Die;
         shotDelay = Random.Range(startMinDelay, startMaxDelay);
         pm = FindObjectOfType<PhaseManager>();
     }
@@ -41,6 +45,12 @@ public class turret : MonoBehaviour
     {
         Instantiate(bullet, shotPoint.position, shotPoint.rotation);
         shotDelay = Random.Range(minDelay, maxDelay);
+    }
+
+    void Die()
+    {
+        Instantiate(deathParticle, this.transform.position, this.transform.rotation);
+        hb.deathEvent -= Die;
     }
 
     private void OnDestroy()

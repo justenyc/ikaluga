@@ -56,7 +56,7 @@ public class HealthPlayer : Health
     public override void DealDamage(float value)
     {
         AudioSource aS = this.GetComponent<AudioSource>();
-        SoundEffects se = FindObjectOfType<SoundEffects>();
+        SoundEffects se = GetComponentInChildren<SoundEffects>();
         aS.pitch = 1;
         if (value > 0)
         {
