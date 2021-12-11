@@ -331,7 +331,7 @@ MonoBehaviour:
   minDelay: 3
   maxDelay: 6
   shotPoint: {fileID: 5445594149646009063}
-  mortarPreFab: {fileID: 7924797881503933846, guid: 1d8fbc02f0a27694aad9f68b4d74be75, type: 3}
+  mortarPreFab: {fileID: 9034893723039160136, guid: 30cbfceb21ef8d9469ab33790d605dee, type: 3}
 --- !u!114 &5445594148086408303
 MonoBehaviour:
   m_ObjectHideFlags: 0
