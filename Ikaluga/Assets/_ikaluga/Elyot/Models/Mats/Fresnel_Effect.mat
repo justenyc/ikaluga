@@ -7,40 +7,25 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Robo_Samurai_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 983b6b85cbb4db94f8f11ea999442487, type: 3}
-  m_ShaderKeywords: _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP
+  m_Name: Fresnel_Effect
+  m_Shader: {fileID: -6465566751694194690, guid: 85d9828bdf742a94bbb888018fcd5b25, type: 3}
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - SHADOWCASTER
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_0f5035f91a40439391f03e624d08ed8c:
-        m_Texture: {fileID: 2800000, guid: 7f9db2925711f9a4bb4e3fce6a38cd37, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_2ac30620798f42699fca87067b6c0124:
-        m_Texture: {fileID: 2800000, guid: b4297951ead67414484f5386370a6c95, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_82dc2b6e72f947fca85251722d37daaf:
-        m_Texture: {fileID: 2800000, guid: 1c0e4815192846f45973ba5054ae352f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_db32c3cf61eb4223a8de2681746682d7:
-        m_Texture: {fileID: 2800000, guid: 125e55ba29d33da4f81a928bb6aa73b7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 1c0e4815192846f45973ba5054ae352f, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: b4297951ead67414484f5386370a6c95, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -56,15 +41,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 7f9db2925711f9a4bb4e3fce6a38cd37, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1c0e4815192846f45973ba5054ae352f, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 125e55ba29d33da4f81a928bb6aa73b7, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -92,8 +77,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_99542d23cfd74af3b6e6adcc89670971: 1.5
-    - Vector1_b873c7afc1bd413f9c55ec0b23a74b19: 0.5
+    - Vector1_cb68193afe724db7996723ccea4e88f6: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -103,7 +87,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -111,24 +95,24 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _QueueOffset: 0
+    - _QueueOffset: 1
     - _ReceiveShadows: 1
-    - _Smoothness: 0.75
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _Surface: 0
+    - _SrcBlend: 5
+    - _Surface: 1
     - _WorkflowMode: 1
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
-    - Color_6927c85d2adc4188bed8caad752f0076: {r: 0, g: 0, b: 0, a: 0}
-    - Emission_Color: {r: 0.5, g: 0.5, b: 0.2509804, a: 1}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - Color_65c4a65c541f4be7b6b73c56a1d50f04: {r: 1, g: 1, b: 1, a: 0}
+    - MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 0.101960786}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &2036129566419671178
+--- !u!114 &7869366111576126857
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -10,12 +10,9 @@ public class HealthPlayer : Health
     public GameObject damageEffect;
     public GameObject shieldEffect;
 
-    ThirdPersonController tpc;
-
     private void Start()
     {
         base.Start();
-        tpc = this.GetComponent<ThirdPersonController>();
     }
 
     private void Update()
@@ -23,7 +20,7 @@ public class HealthPlayer : Health
         if (bright)
         {
             Color c = playerMat.GetColor("Emission_Color");
-            Color targetColor = tpc.brightColor;
+            Color targetColor = brightColor;
 
             Vector3 v3Color = new Vector3(c.r, c.g, c.b);
             Vector3 targetV3 = new Vector3(targetColor.r, targetColor.g, targetColor.b);
@@ -36,7 +33,7 @@ public class HealthPlayer : Health
         else
         {
             Color c = playerMat.GetColor("Emission_Color");
-            Color targetColor = tpc.darkColor;
+            Color targetColor = darkColor;
 
             Vector3 v3Color = new Vector3(c.r, c.g, c.b);
             Vector3 targetV3 = new Vector3(targetColor.r, targetColor.g, targetColor.b);
@@ -83,5 +80,19 @@ public class HealthPlayer : Health
         Debug.Log(this.name + " Current Health = " + currentHealth); 
         if (currentHealth <= 0)
             Die();
+    }
+
+    public void QuickChangeColor()
+    {
+        if (bright)
+        {
+            playerCapeMat.SetColor("Emission_Color", brightColor);
+            playerMat.SetColor("Emission_Color", brightColor);
+        }
+        else
+        {
+            playerCapeMat.SetColor("Emission_Color", darkColor);
+            playerMat.SetColor("Emission_Color", darkColor);
+        }
     }
 }

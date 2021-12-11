@@ -387,6 +387,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6580315624064827165, guid: 89190db84b2abae42abd3f91ef9c18af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3367486
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580315624064827165, guid: 89190db84b2abae42abd3f91ef9c18af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.02
+      objectReference: {fileID: 0}
     - target: {fileID: 7924797881503933846, guid: 89190db84b2abae42abd3f91ef9c18af, type: 3}
       propertyPath: m_Name
       value: Bullet
@@ -405,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7924797881503933853, guid: 89190db84b2abae42abd3f91ef9c18af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.7674813
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 7924797881503933853, guid: 89190db84b2abae42abd3f91ef9c18af, type: 3}
       propertyPath: m_LocalRotation.w
