@@ -12,6 +12,7 @@ public class mortar : MonoBehaviour
     public GameObject mortarPreFab;
     private HealthBoss hb;
     public GameObject deathParticle;
+    AudioSource audioSource;
 
     private PhaseManager pm;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class mortar : MonoBehaviour
         hb.deathEvent += Die;
         shotDelay = Random.Range(minDelay, maxDelay);
         pm = FindObjectOfType<PhaseManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,6 +46,9 @@ public class mortar : MonoBehaviour
     {
         Instantiate(mortarPreFab, shotPoint.position, shotPoint.rotation);
         shotDelay = Random.Range(minDelay, maxDelay);
+        audioSource.volume = 0.65f;
+        audioSource.pitch = .9f;
+        audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("Whoosh 6_5"));
     }
     private void OnDestroy()
     {

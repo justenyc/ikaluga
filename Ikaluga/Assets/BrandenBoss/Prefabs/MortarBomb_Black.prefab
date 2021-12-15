@@ -100,7 +100,7 @@ MonoBehaviour:
   moveSpeed: 15
   lifetime: 10
   bright: 0
-  damage: 10
+  damage: 12
   trackTime: 1.5
   originObject: {fileID: 0}
   particles: {fileID: 9221979518356943653, guid: bcff561fd39eace4f956dc581b36784e, type: 3}

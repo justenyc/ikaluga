@@ -12,10 +12,11 @@ public class Rotator : MonoBehaviour
 
     private bool rotatingForward;
     private bool stopped;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

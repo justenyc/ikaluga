@@ -386,6 +386,7 @@ MonoBehaviour:
   maxDelay: 15
   shotPoint: {fileID: 3296062182274699800}
   missile: {fileID: 7924797881503933846, guid: 8e26b859b3cde0e469bb2f6c14f6d0ec, type: 3}
+  deathParticle: {fileID: 0}
 --- !u!114 &610962669986454355
 MonoBehaviour:
   m_ObjectHideFlags: 0
