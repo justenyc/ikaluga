@@ -336,6 +336,7 @@ MonoBehaviour:
   maxDelay: 8
   shotPoint: {fileID: 5445594149646009063}
   mortarPreFab: {fileID: 9034893723039160136, guid: 30cbfceb21ef8d9469ab33790d605dee, type: 3}
+  deathParticle: {fileID: 0}
 --- !u!114 &5445594148086408303
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,8 +37,9 @@ public class missile : Projectile
         else
         {
             sc.enabled = true;
-            float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+            float step = moveSpeed/5 * Time.deltaTime;
+            //transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+            transform.position = Vector3.Lerp(transform.position, target.position, step);
         }
         
 
