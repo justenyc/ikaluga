@@ -17,6 +17,6 @@ public class OniAggressive : OniInterface
 
     public void StateUpdate()
     {
-
+        Debug.Log("Oni is now aggressive");
     }
 }

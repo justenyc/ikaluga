@@ -38,7 +38,6 @@ public class HealthBoss : Health
             case RendererType.SkinnedMeshRenderer:
                 foreach (Material m in skinnedMeshRenderer.materials)
                 {
-                    Debug.Log(m.name);
                     if (m.name == "Fresnel_Effect (Instance)")
                     {
                         mat = m;

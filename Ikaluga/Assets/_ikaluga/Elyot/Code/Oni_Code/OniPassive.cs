@@ -5,6 +5,7 @@ using UnityEngine;
 public class OniPassive : OniInterface
 {
     Oni manager;
+
     // Start is called before the first frame update
     public OniPassive(Oni managerRef)
     {
@@ -14,7 +15,7 @@ public class OniPassive : OniInterface
     
     public void StateStart()
     {
-        
+        manager.RandomDirection();
     }
 
     // Update is called once per frame
@@ -25,7 +26,6 @@ public class OniPassive : OniInterface
 
     void Movement()
     {
-        manager.TrackPlayer();
         manager.Rotate();
         manager.rb.position += manager.direction * manager.moveSpeed * Time.deltaTime;
         manager.anim.SetFloat("Move", manager.moveSpeed);

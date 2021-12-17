@@ -36,8 +36,7 @@ public class Projectile : MonoBehaviour
         {
             Destroy(this.gameObject, 1f);
             this.GetComponent<MeshRenderer>().enabled = false;
-            this.GetComponent<SphereCollider>().enabled = false;
-            this.GetComponent<Rigidbody>().isKinematic = true;
+            this.GetComponent<Collider>().enabled = false;
         }
     }
 
@@ -69,7 +68,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Projectile: " + collision.collider.gameObject);
+        //Debug.Log("Projectile: " + collision.collider.gameObject);
         if (collision.collider.gameObject != this.originObject)
         {
             try
@@ -94,11 +93,15 @@ public class Projectile : MonoBehaviour
                 {
                     collidedHp.DealDamage(0);
                 }
-                Destroy(this.gameObject);
+                Destroy(this.gameObject, 1f);
+                this.GetComponent<MeshRenderer>().enabled = false;
+                this.GetComponent<Collider>().enabled = false;
             }
             catch
             {
-                Destroy(this.gameObject);
+                Destroy(this.gameObject, 1f);
+                this.GetComponent<MeshRenderer>().enabled = false;
+                this.GetComponent<Collider>().enabled = false;
             }
         }
     }
