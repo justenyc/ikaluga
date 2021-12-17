@@ -16,7 +16,7 @@ public class Water : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other.name + " has exited water");
+        //Debug.Log(other.name + " has exited water");
         if (other.GetComponent<Health>())
             list.Remove(other.GetComponent<Health>());
     }

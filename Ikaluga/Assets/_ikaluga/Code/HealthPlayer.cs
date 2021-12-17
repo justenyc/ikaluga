@@ -66,7 +66,7 @@ public class HealthPlayer : Health
         if (value > 0)
         {
             aS.volume = 1f;
-            aS.PlayOneShot(se.GetClip("PlayerDamageSound"));
+            aS.PlayOneShot(se.GetClip("Damage"));
 
             playerCapeMat.SetColor("Emission_Color", Color.red);
             playerMat.SetColor("Emission_Color", Color.red);
@@ -78,7 +78,7 @@ public class HealthPlayer : Health
         else
         {
             aS.volume = 0.1f;
-            aS.PlayOneShot(se.GetClip("PlayerShieldSound"));
+            aS.PlayOneShot(se.GetClip("Shield"));
             ParticleSystemRenderer pr = shieldEffect.GetComponent<ParticleSystemRenderer>();
             pr.material.SetFloat("Laser_Particle_Alpha", 1f);
             shieldEffect.SetActive(true);
