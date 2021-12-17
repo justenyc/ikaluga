@@ -10,9 +10,14 @@ public class HealthPlayer : Health
     public GameObject damageEffect;
     public GameObject shieldEffect;
 
+    public healthbar healthBar;
+    private cinemachineshake cmshake;
+
     private void Start()
     {
         base.Start();
+        healthBar = FindObjectOfType<healthbar>();
+        cmshake = FindObjectOfType<cinemachineshake>();
     }
 
     private void Update()
@@ -56,7 +61,7 @@ public class HealthPlayer : Health
     public override void DealDamage(float value)
     {
         AudioSource aS = this.GetComponent<AudioSource>();
-        SoundEffects se = FindObjectOfType<SoundEffects>();
+        SoundEffects se = GetComponentInChildren<SoundEffects>();
         aS.pitch = 1;
         if (value > 0)
         {
@@ -67,6 +72,8 @@ public class HealthPlayer : Health
             playerMat.SetColor("Emission_Color", Color.red);
             damageEffect.SetActive(true);
             currentHealth -= value;
+            healthBar.SetHealth(currentHealth);
+            cmshake.ShakeCamera(2.5f, .2f);
         }
         else
         {

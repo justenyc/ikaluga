@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7924797881503933841}
   - component: {fileID: 4596866406683616136}
   m_Layer: 6
-  m_Name: TestBullet
+  m_Name: TestBulletWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,12 +112,13 @@ MonoBehaviour:
   moveSpeed: 10
   lifetime: 3
   bright: 1
-  damage: 1
+  damage: 2
   originObject: {fileID: 0}
   lightMainColor: {r: 1, g: 1, b: 1, a: 0}
   lightEmissiveColor: {r: 1, g: 1, b: 0, a: 0}
   darkMainColor: {r: 0, g: 0, b: 0, a: 0}
   darkEmissiveColor: {r: 1, g: 0, b: 1, a: 0}
+  mr: {fileID: 0}
 --- !u!54 &4596866406683616136
 Rigidbody:
   m_ObjectHideFlags: 0

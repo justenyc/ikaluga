@@ -12,11 +12,15 @@ public class HealthBoss : Health
 
     [SerializeField] [HideInInspector] MeshRenderer meshRenderer;
     [SerializeField] [HideInInspector] SkinnedMeshRenderer skinnedMeshRenderer;
+    AudioSource audioSource;
+    public delegate void deathDelagate();
+    public event deathDelagate deathEvent;
 
     private void Start()
     {
         base.Start();
         FindMatOnRenderer();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FindMatOnRenderer()
@@ -92,11 +96,28 @@ public class HealthBoss : Health
         {
             currentHealth -= value;
             ChangeFresnelColor(Color.red);
+            audioSource.volume = 0.15f;
+            audioSource.pitch = .9f;
+            audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("TomWinandySFX_UI_ScifiTech_Impact_02"));
         }
         else
         {
+            audioSource.volume = 0.15f;
+            audioSource.pitch = 1.1f;
+            audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("TomWinandySFX_UI_ScifiTech_Impact_01"));
             ChangeFresnelColor(Color.white);
         }
+    }
+
+    public override void Die()
+    {
+        meshRenderer.enabled = false;
+        GetComponent<Collider>().enabled = false;
+        if(deathEvent != null)
+        {
+            deathEvent();
+        }
+        Destroy(this.gameObject, .35f);
     }
 
     void ChangeFresnelColor(Color color)
@@ -132,6 +153,7 @@ public enum RendererType
 };
  
 [CustomEditor(typeof(HealthBoss))]
+[CanEditMultipleObjects]
 public class MyScriptEditor : Editor
 {
     override public void OnInspectorGUI()
@@ -147,6 +169,10 @@ public class MyScriptEditor : Editor
         else
         {
             hb.SetSkinnedMeshRenderer((SkinnedMeshRenderer)EditorGUILayout.ObjectField("Skinned Mesh Renderer", hb.GetSkinnedMeshRenderer(), typeof(SkinnedMeshRenderer), true));
+        }
+        if (EditorGUI.EndChangeCheck())
+        {
+            EditorUtility.SetDirty(hb);
         }
     }
 }
