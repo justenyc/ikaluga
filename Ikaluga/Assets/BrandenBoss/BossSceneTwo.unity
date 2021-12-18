@@ -1193,6 +1193,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5884976518237810481, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884976518237810481, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
@@ -35195,6 +35199,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5884976518237810481, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884976518237810481, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
@@ -56758,6 +56766,10 @@ PrefabInstance:
     - target: {fileID: 5204749603225971831, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884976518237810481, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5884976518237810481, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -83073,6 +83085,10 @@ PrefabInstance:
     - target: {fileID: 5204749603225971831, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884976518237810481, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5884976518237810481, guid: fd7cdf94ac149c14faf677d52a00effa, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value

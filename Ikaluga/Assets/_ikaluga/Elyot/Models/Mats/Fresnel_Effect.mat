@@ -106,7 +106,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - Color_65c4a65c541f4be7b6b73c56a1d50f04: {r: 1, g: 1, b: 1, a: 0}
-    - MainColor: {r: 0.12549023, g: 7e-45, b: 0.50196093, a: 1}
+    - MainColor: {r: 0.12549023, g: 4e-45, b: 0.50196093, a: 1}
     - _BaseColor: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 0.101960786}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

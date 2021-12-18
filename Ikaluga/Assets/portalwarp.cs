@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class portalwarp : MonoBehaviour
 {
     public SceneEnum scene;
+    private fade fadeScript;
+
+    private void Start()
+    {
+        fadeScript = FindObjectOfType<fade>();
+
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -16,16 +23,20 @@ public class portalwarp : MonoBehaviour
             switch (scene)
             {
                 case SceneEnum.Hub:
-                    SceneManager.LoadScene(5);
+                    Invoke("LoadHub", 1.1f);
+                    fadeScript.FadeStart();
                     break;
                 case SceneEnum.BrandenBoss:
-                    SceneManager.LoadScene(2);
+                    Invoke("LoadBrandenBoss", 1.1f);
+                    fadeScript.FadeStart();
                     break;
                 case SceneEnum.NickBoss:
-                    SceneManager.LoadScene(3);
+                    Invoke("LoadNickBoss", 1.1f);
+                    fadeScript.FadeStart();
                     break;
                 case SceneEnum.ElyotBoss:
-                    SceneManager.LoadScene(4);
+                    Invoke("LoadElyotBoss", 1.1f);
+                    fadeScript.FadeStart();
                     break;
                 case SceneEnum.JustenBoss:
                     //this doesnt exist yet
@@ -33,7 +44,28 @@ public class portalwarp : MonoBehaviour
             }
         }
     }
+    void LoadHub()
+    {
+        SceneManager.LoadScene(5);
+    }
+
+    void LoadBrandenBoss()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    void LoadNickBoss()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    void LoadElyotBoss()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
+
+
 
 public enum SceneEnum
 {
