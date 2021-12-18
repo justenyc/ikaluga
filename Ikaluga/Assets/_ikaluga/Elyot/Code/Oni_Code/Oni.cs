@@ -27,6 +27,7 @@ public class Oni : MonoBehaviour
         anim = oni.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         ChangeFresnelColor(myHealth.bright);
+        GameObject.Find("Ogre").GetComponent<SkinnedMeshRenderer>().materials[1].SetFloat("Vector1_cb68193afe724db7996723ccea4e88f6", 1);
         state = new OniIdle(this);
     }
 
@@ -94,5 +95,10 @@ public class Oni : MonoBehaviour
         {
             direction *= -1;
         }
+    }
+
+    public void Attack(string s)
+    {
+
     }
 }

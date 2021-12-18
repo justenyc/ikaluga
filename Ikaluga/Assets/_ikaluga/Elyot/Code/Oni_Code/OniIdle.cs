@@ -14,7 +14,7 @@ public class OniIdle : OniInterface
     // Start is called before the first frame update
     public void StateStart()
     {
-        
+        //manager.anim.SetInteger("AnimState", 3);
     }
 
     // Update is called once per frame

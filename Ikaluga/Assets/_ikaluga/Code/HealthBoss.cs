@@ -33,7 +33,6 @@ public class HealthBoss : Health
                     if (m.name == "Fresnel_Effect (Instance)")
                     {
                         mat = m;
-                        Debug.Log("Found Mat");
                         return;
                     }
                 }
@@ -45,7 +44,6 @@ public class HealthBoss : Health
                     if (m.name == "Fresnel_Effect (Instance)")
                     {
                         mat = m;
-                        Debug.Log("Found Mat");
                         return;
                     }
                 }
