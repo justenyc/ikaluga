@@ -22,13 +22,22 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         mr = this.GetComponent<MeshRenderer>();
-        Destroy(this.gameObject, lifetime);
         ChangeColor(bright);
     }
 
     void Update()
     {
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        if (lifetime > 0)
+        {
+            lifetime -= Time.deltaTime;
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            Destroy(this.gameObject, 1f);
+            this.GetComponent<MeshRenderer>().enabled = false;
+            this.GetComponent<Collider>().enabled = false;
+        }
     }
 
     //Called by instantiating object
@@ -80,11 +89,19 @@ public class Projectile : MonoBehaviour
                         collidedHp.DealDamage(damage);
                     }
                 }
-                Destroy(this.gameObject);
+                else
+                {
+                    collidedHp.DealDamage(0);
+                }
+                Destroy(this.gameObject, 1f);
+                this.GetComponent<MeshRenderer>().enabled = false;
+                this.GetComponent<Collider>().enabled = false;
             }
             catch
             {
-                Destroy(this.gameObject);
+                Destroy(this.gameObject, 1f);
+                this.GetComponent<MeshRenderer>().enabled = false;
+                this.GetComponent<Collider>().enabled = false;
             }
         }
     }

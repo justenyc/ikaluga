@@ -10,12 +10,14 @@ public class HealthPlayer : Health
     public GameObject damageEffect;
     public GameObject shieldEffect;
 
-    ThirdPersonController tpc;
+    public healthbar healthBar;
+    private cinemachineshake cmshake;
 
     private void Start()
     {
         base.Start();
-        tpc = this.GetComponent<ThirdPersonController>();
+        healthBar = FindObjectOfType<healthbar>();
+        cmshake = FindObjectOfType<cinemachineshake>();
     }
 
     private void Update()
@@ -23,7 +25,7 @@ public class HealthPlayer : Health
         if (bright)
         {
             Color c = playerMat.GetColor("Emission_Color");
-            Color targetColor = tpc.brightColor;
+            Color targetColor = brightColor;
 
             Vector3 v3Color = new Vector3(c.r, c.g, c.b);
             Vector3 targetV3 = new Vector3(targetColor.r, targetColor.g, targetColor.b);
@@ -36,7 +38,7 @@ public class HealthPlayer : Health
         else
         {
             Color c = playerMat.GetColor("Emission_Color");
-            Color targetColor = tpc.darkColor;
+            Color targetColor = darkColor;
 
             Vector3 v3Color = new Vector3(c.r, c.g, c.b);
             Vector3 targetV3 = new Vector3(targetColor.r, targetColor.g, targetColor.b);
@@ -46,21 +48,58 @@ public class HealthPlayer : Health
             playerCapeMat.SetColor("Emission_Color", new Color(lerp.x, lerp.y, lerp.z));
             playerMat.SetColor("Emission_Color", new Color(lerp.x, lerp.y, lerp.z));
         }
+
+        ParticleSystemRenderer pr = shieldEffect.GetComponent<ParticleSystemRenderer>();
+        float a = shieldEffect.GetComponent<ParticleSystemRenderer>().material.GetFloat("Laser_Particle_Alpha");
+        if (a > 0)
+        {
+            a -= Time.deltaTime * 5f;
+            pr.material.SetFloat("Laser_Particle_Alpha", a);
+        }
     }
 
     public override void DealDamage(float value)
     {
         AudioSource aS = this.GetComponent<AudioSource>();
-        SoundEffects se = FindObjectOfType<SoundEffects>();
-        aS.volume = 1f;
-        aS.PlayOneShot(se.GetClip("PlayerDamageSound"));
+        SoundEffects se = GetComponentInChildren<SoundEffects>();
+        aS.pitch = 1;
+        if (value > 0)
+        {
+            aS.volume = 1f;
+            aS.PlayOneShot(se.GetClip("Damage"));
 
-        playerCapeMat.SetColor("Emission_Color", Color.red);
-        playerMat.SetColor("Emission_Color", Color.red);
-        damageEffect.SetActive(true);
-        currentHealth -= value;
-        Debug.Log(this.name + " Current Health = " + currentHealth);
+            playerCapeMat.SetColor("Emission_Color", Color.red);
+            playerMat.SetColor("Emission_Color", Color.red);
+            damageEffect.SetActive(true);
+            currentHealth -= value;
+            healthBar.SetHealth(currentHealth);
+            cmshake.ShakeCamera(2.5f, .2f);
+        }
+        else
+        {
+            aS.volume = 0.1f;
+            aS.PlayOneShot(se.GetClip("Shield"));
+            ParticleSystemRenderer pr = shieldEffect.GetComponent<ParticleSystemRenderer>();
+            pr.material.SetFloat("Laser_Particle_Alpha", 1f);
+            shieldEffect.SetActive(true);
+        }
+
+        Debug.Log(this.name + " Current Health = " + currentHealth); 
         if (currentHealth <= 0)
             Die();
+    }
+
+    public void QuickChangeColor()
+    {
+        if (bright)
+        {
+            playerCapeMat.SetColor("Emission_Color", brightColor);
+            playerMat.SetColor("Emission_Color", brightColor);
+        }
+        else
+        {
+            playerCapeMat.SetColor("Emission_Color", darkColor);
+            playerMat.SetColor("Emission_Color", darkColor);
+        }
     }
 }

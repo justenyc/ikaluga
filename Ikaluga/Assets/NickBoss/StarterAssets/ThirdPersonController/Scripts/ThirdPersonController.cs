@@ -16,10 +16,6 @@ namespace StarterAssets
 #endif
 	public class ThirdPersonController : MonoBehaviour
 	{
-		[ColorUsage(true, true)] public Color brightColor;
-		[ColorUsage(true, true)] public Color darkColor;
-		public Material playerMaterial;
-		public Material playerCapeMaterial;
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 5.335f;
@@ -339,16 +335,7 @@ namespace StarterAssets
 		void ChangeColor()
 		{
 			health.bright = !health.bright;
-			if (health.bright)
-			{
-				playerCapeMaterial.SetColor("Emission_Color", brightColor);
-				playerMaterial.SetColor("Emission_Color", brightColor);
-			}
-			else
-			{
-				playerCapeMaterial.SetColor("Emission_Color", darkColor);
-				playerMaterial.SetColor("Emission_Color", darkColor);
-			}
+			health.QuickChangeColor();
 		}
 
 		public void OnColorChange(InputValue value)
@@ -371,7 +358,7 @@ namespace StarterAssets
 			if(shootPressed && shootCD <= 0)
             {
 				AudioSource aS = this.GetComponent<AudioSource>();
-				SoundEffects se = FindObjectOfType<SoundEffects>();
+				SoundEffects se = GetComponentInChildren<SoundEffects>();
 
 				if (this.GetComponent<HealthPlayer>().bright)
 					aS.pitch = Random.Range(2f, 2.2f);
@@ -379,7 +366,8 @@ namespace StarterAssets
 					aS.pitch = Random.Range(1, 1.2f);
 
 				aS.volume = 0.1f;
-				//aS.PlayOneShot(se.GetClip("IkalugaBullet"));
+
+				aS.PlayOneShot(se.GetClip("Shoot"));
 
 				shootCD = fireRate;
 				this.GetComponent<IKControl>().ikActive = true;
