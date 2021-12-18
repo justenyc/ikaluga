@@ -42,7 +42,6 @@ public class HealthBoss : Health
             case RendererType.SkinnedMeshRenderer:
                 foreach (Material m in skinnedMeshRenderer.materials)
                 {
-                    Debug.Log(m.name);
                     if (m.name == "Fresnel_Effect (Instance)")
                     {
                         mat = m;
@@ -92,6 +91,7 @@ public class HealthBoss : Health
 
     public override void DealDamage(float value)
     {
+        Debug.Log("DealDamage value = " + value);
         base.DealDamage(value);
         if (value > 0)
         {
@@ -99,14 +99,14 @@ public class HealthBoss : Health
             ChangeFresnelColor(Color.red);
             audioSource.volume = 0.15f;
             audioSource.pitch = .9f;
-            audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("TomWinandySFX_UI_ScifiTech_Impact_02"));
+            audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("Damage"));
         }
         else
         {
+            ChangeFresnelColor(Color.white);
             audioSource.volume = 0.15f;
             audioSource.pitch = 1.1f;
-            audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("TomWinandySFX_UI_ScifiTech_Impact_01"));
-            ChangeFresnelColor(Color.white);
+            audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("Shield"));
         }
     }
 

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SoundEffects : MonoBehaviour
 {
-    public AudioClip[] soundEffects;
-    Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
+    public SoundEffect[] soundEffects;
+    Dictionary<string, SoundEffect> sounds = new Dictionary<string, SoundEffect>();
 
     private void Awake()
     {
-        foreach (AudioClip ac in soundEffects)
+        foreach (SoundEffect ac in soundEffects)
         {
             sounds.Add(ac.name, ac);
         }
@@ -17,7 +17,18 @@ public class SoundEffects : MonoBehaviour
 
     public AudioClip GetClip(string name)
     {
-        Debug.Log(name);
-        return sounds[name];
+        if (sounds[name].audioClip == null)
+            Debug.LogError("Did not find audioClip in " + name);
+
+        return sounds[name].audioClip;
     }
+}
+
+[System.Serializable]
+public struct SoundEffect
+{
+    public string name;
+    public AudioClip audioClip;
+    [Range(0, 1)] public float volume;
+    [Range(0, 3)] public float pitch;
 }

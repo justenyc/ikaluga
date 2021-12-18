@@ -9,14 +9,14 @@ public class Water : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name + " has entered water");
+        //Debug.Log(other.name + " has entered water");
         if (other.GetComponent<Health>())
             list.Add(other.GetComponent<Health>());
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other.name + " has exited water");
+        //Debug.Log(other.name + " has exited water");
         if (other.GetComponent<Health>())
             list.Remove(other.GetComponent<Health>());
     }

@@ -27,12 +27,13 @@ public class Oni : MonoBehaviour
         anim = oni.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         ChangeFresnelColor(myHealth.bright);
-        state = new OniPassive(this);
+        state = new OniIdle(this);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ChangeState();
         state.StateUpdate();
     }
 
@@ -75,7 +76,7 @@ public class Oni : MonoBehaviour
     public void RandomDirection()
     {
         Vector2 randomDirection = Random.insideUnitCircle;
-        direction = randomDirection;
+        direction = new Vector3(randomDirection.x,0,randomDirection.y).normalized;
     }
 
     public void Rotate()
@@ -91,7 +92,7 @@ public class Oni : MonoBehaviour
     {
         if (collision.collider.tag == "wellwall")
         {
-            RandomDirection();
+            direction *= -1;
         }
     }
 }

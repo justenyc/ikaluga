@@ -11380,9 +11380,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - {fileID: 8300000, guid: 59e41648d2f1f5f4bad561e2a107ae04, type: 3}
-  - {fileID: 8300000, guid: 9bb6324416c71fe48b507352f93b46f9, type: 3}
-  - {fileID: 8300000, guid: 6ff112a14220f164a970079d52beb840, type: 3}
+  - name: Shoot
+    audioClip: {fileID: 8300000, guid: 59e41648d2f1f5f4bad561e2a107ae04, type: 3}
+    volume: 0
+    pitch: 0
+  - name: Damage
+    audioClip: {fileID: 8300000, guid: 9bb6324416c71fe48b507352f93b46f9, type: 3}
+    volume: 0
+    pitch: 0
+  - name: Shield
+    audioClip: {fileID: 8300000, guid: 6ff112a14220f164a970079d52beb840, type: 3}
+    volume: 0
+    pitch: 0
 --- !u!1 &122036865199361367
 GameObject:
   m_ObjectHideFlags: 0
@@ -12469,10 +12478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brightColor: {r: 0.5, g: 0.5, b: 0.2509804, a: 0}
-  darkColor: {r: 0.1254902, g: 0, b: 0.5019608, a: 0}
-  playerMaterial: {fileID: 2100000, guid: b27a38c11deb6394e8f25dde2c8ccb09, type: 2}
-  playerCapeMaterial: {fileID: 2100000, guid: 9c9729cc30fd441448d082fb9a1cad50, type: 2}
   MoveSpeed: 5.335
   SprintSpeed: 5.335
   RotationSmoothTime: 0.12
@@ -12674,10 +12679,13 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   bright: 0
+  brightColor: {r: 0.5, g: 0.5, b: 0.2509804, a: 1}
+  darkColor: {r: 0.1254902, g: 0, b: 0.5019608, a: 1}
   playerMat: {fileID: 2100000, guid: b27a38c11deb6394e8f25dde2c8ccb09, type: 2}
   playerCapeMat: {fileID: 2100000, guid: 9c9729cc30fd441448d082fb9a1cad50, type: 2}
   damageEffect: {fileID: 15005504}
   shieldEffect: {fileID: 891237248}
+  healthBar: {fileID: 0}
 --- !u!82 &773521928
 AudioSource:
   m_ObjectHideFlags: 0
