@@ -91,6 +91,7 @@ public class HealthPlayer : Health
         {
             Die();
             DefeatScreen.SetActive(true);
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
     }

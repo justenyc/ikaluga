@@ -35,6 +35,8 @@ public class PhaseManager : MonoBehaviour
     public GameObject fieldParticles;
     public GameObject coreFieldParticles;
     public GameObject[] mortarFieldEffects;
+    public GameObject victoryScreen;
+    public GameObject portal;
 
     public enum Phase
     {
@@ -204,6 +206,9 @@ public class PhaseManager : MonoBehaviour
     {
         explosionParticlesVictory.SetActive(true);
         cores.SetActive(false);
+        victoryScreen.SetActive(true);
+        bgm.SetActive(false);
+        portal.SetActive(true);
     }
 
     private void ActivateLasers()
