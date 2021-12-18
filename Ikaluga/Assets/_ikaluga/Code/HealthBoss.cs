@@ -8,7 +8,7 @@ public class HealthBoss : Health
 {
     public RendererType rendererType;
 
-    Material mat;
+    public Material mat;
 
     [SerializeField] [HideInInspector] MeshRenderer meshRenderer;
     [SerializeField] [HideInInspector] SkinnedMeshRenderer skinnedMeshRenderer;
@@ -53,29 +53,36 @@ public class HealthBoss : Health
 
     private void Update()
     {
-        if (bright)
+        try
         {
-            Color c = mat.GetColor("MainColor");
-            Color targetColor = brightColor;
+            if (bright)
+            {
+                Color c = mat.GetColor("MainColor");
+                Color targetColor = brightColor;
 
-            Vector3 v3Color = new Vector3(c.r, c.g, c.b);
-            Vector3 targetV3 = new Vector3(targetColor.r, targetColor.g, targetColor.b);
+                Vector3 v3Color = new Vector3(c.r, c.g, c.b);
+                Vector3 targetV3 = new Vector3(targetColor.r, targetColor.g, targetColor.b);
 
-            Vector3 lerp = Vector3.Lerp(v3Color, targetV3, Time.deltaTime * 2f);
+                Vector3 lerp = Vector3.Lerp(v3Color, targetV3, Time.deltaTime * 2f);
 
-            mat.SetColor("MainColor", new Color(lerp.x, lerp.y, lerp.z));
+                mat.SetColor("MainColor", new Color(lerp.x, lerp.y, lerp.z));
+            }
+            else
+            {
+                Color c = mat.GetColor("MainColor");
+                Color targetColor = darkColor;
+
+                Vector3 v3Color = new Vector3(c.r, c.g, c.b);
+                Vector3 targetV3 = new Vector3(targetColor.r, targetColor.g, targetColor.b);
+
+                Vector3 lerp = Vector3.Lerp(v3Color, targetV3, Time.deltaTime * 2f);
+
+                mat.SetColor("MainColor", new Color(lerp.x, lerp.y, lerp.z));
+            }
         }
-        else
+        catch
         {
-            Color c = mat.GetColor("MainColor");
-            Color targetColor = darkColor;
 
-            Vector3 v3Color = new Vector3(c.r, c.g, c.b);
-            Vector3 targetV3 = new Vector3(targetColor.r, targetColor.g, targetColor.b);
-
-            Vector3 lerp = Vector3.Lerp(v3Color, targetV3, Time.deltaTime * 2f);
-
-            mat.SetColor("MainColor", new Color(lerp.x, lerp.y, lerp.z));
         }
 
         /*ParticleSystemRenderer pr = shieldEffect.GetComponent<ParticleSystemRenderer>();
