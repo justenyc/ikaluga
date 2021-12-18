@@ -99,10 +99,8 @@ public class HealthBoss : Health
     public override void DealDamage(float value)
     {
         Debug.Log("DealDamage value = " + value);
-        base.DealDamage(value);
         if (value > 0)
         {
-            currentHealth -= value;
             ChangeFresnelColor(Color.red);
             audioSource.volume = 0.15f;
             audioSource.pitch = .9f;
@@ -115,6 +113,7 @@ public class HealthBoss : Health
             audioSource.pitch = 1.1f;
             audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("Shield"));
         }
+        base.DealDamage(value);
     }
 
     public override void Die()
