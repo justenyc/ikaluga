@@ -7,6 +7,9 @@ public class BossDieScript : MonoBehaviour
 {
     public GameObject player;
 
+    public GameObject LosingScreen;
+    public GameObject VictoryScreen;
+
     public int HeartCount;
 
     // Start is called before the first frame update
@@ -32,11 +35,13 @@ public class BossDieScript : MonoBehaviour
 
     public void EndGamePlayerWins()
     {
+        VictoryScreen.SetActive(true);
         Debug.Log("GAME ENDED ALL BOSS HEARTS DEAD");
     }
 
     public void EndGameBossWins()
     {
+        LosingScreen.SetActive(true);
         Debug.Log("GAME ENDED PLAYER DEAD");
     }
 }

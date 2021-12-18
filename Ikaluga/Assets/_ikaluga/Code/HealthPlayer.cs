@@ -11,6 +11,8 @@ public class HealthPlayer : Health
     public GameObject shieldEffect;
 
     public healthbar healthBar;
+    public GameObject DefeatScreen;
+
     private cinemachineshake cmshake;
 
     private void Start()
@@ -86,7 +88,11 @@ public class HealthPlayer : Health
 
         Debug.Log(this.name + " Current Health = " + currentHealth); 
         if (currentHealth <= 0)
+        {
             Die();
+            DefeatScreen.SetActive(true);
+        }
+
     }
 
     public void QuickChangeColor()
