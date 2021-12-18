@@ -254,7 +254,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2594643376489518851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5153758915898350522}
+        m_TargetAssemblyTypeName: deathcanvas, Assembly-CSharp
+        m_MethodName: InvokeHub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2959975341403698824
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +657,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2651231600220319971}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5153758915898350522}
+        m_TargetAssemblyTypeName: deathcanvas, Assembly-CSharp
+        m_MethodName: InvokeReloadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5632315748457616299
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +682,7 @@ GameObject:
   - component: {fileID: 4413281003247943631}
   - component: {fileID: 1282234693915039211}
   - component: {fileID: 1223406234339477203}
+  - component: {fileID: 5153758915898350522}
   m_Layer: 5
   m_Name: Death_Canvas
   m_TagString: Untagged
@@ -746,6 +771,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5153758915898350522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5632315748457616299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481335a32d0269f4bbf160a6162275bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5728921449704731307
 GameObject:
   m_ObjectHideFlags: 0
