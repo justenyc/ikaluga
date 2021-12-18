@@ -77,6 +77,10 @@ public class laser : MonoBehaviour
                         collidedHp.DealDamage(damage);
                     }
                 }
+                else
+                {
+                    collidedHp.DealDamage(0);
+                }
             }
             catch
             {
