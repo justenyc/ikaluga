@@ -9030,7 +9030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac1b1663796a094ca64ef0f3bbdbcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   bright: 1
   brightColor: {r: 0.5019608, g: 0.5019608, b: 0.2509804, a: 0}
