@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6074742075645857775}
   - component: {fileID: 6074742075645857774}
   - component: {fileID: 6074742075645857773}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e87b7af9d59e210409fa5cfc0e4bf627, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,3 +98,9 @@ MonoBehaviour:
   damage: 0
   explosion_radius: 5
   explosion_effect: {fileID: 1778023920397017898, guid: 4abbe697286c20b4d9b53ff6cd5874ec, type: 3}
+  bright: 1
+  lightMainColor: {r: 1, g: 1, b: 1, a: 0}
+  lightEmissiveColor: {r: 0.5019608, g: 0.5019608, b: 0.2509804, a: 0}
+  darkMainColor: {r: 0, g: 0, b: 0, a: 0}
+  darkEmissiveColor: {r: 0.1254902, g: 0, b: 0.5019608, a: 0}
+  mr: {fileID: 0}

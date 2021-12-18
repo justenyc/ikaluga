@@ -11,12 +11,16 @@ public class ShootScript : MonoBehaviour
 
     public GameObject MachineGunTurret;
 
-    public GameObject projectile;
+    public GameObject projectileBright;
+    public GameObject projectileDark;
     public GameObject fastProjectileBright;
     public GameObject fastProjectileDark;
 
-    public GameObject mine;
+    private bool alternateProjectileOne = false;
+    private bool alternateProjectileTwo = false;
 
+    public GameObject mine;
+    private bool mineBright = false;
 
     public GameObject[] blocking_cubes;
     private int current_invisible_cube = 0;
@@ -80,6 +84,7 @@ public class ShootScript : MonoBehaviour
     public void EnableMachineGun()
     {
         MachineGunEnabled = true;
+        HideAllBlockingCubes();
     }
 
     public void PauseMachineGun()
@@ -104,18 +109,39 @@ public class ShootScript : MonoBehaviour
 
     public void shootshotOne()
     {
+
         //This rotation doesn't do anything because it's immediately overwritten but I'm too lazy to define a different spawn rotation
         var rotationAngle = Quaternion.LookRotation(slowTurret1.transform.position - transform.position);
-        GameObject newProjectile = Instantiate(projectile, slowTurret1.transform.position, rotationAngle);
-        newProjectile.transform.LookAt(player.transform);
+        if (alternateProjectileOne)
+        {
+            GameObject newProjectile = Instantiate(projectileBright, slowTurret1.transform.position, rotationAngle);
+            newProjectile.transform.LookAt(player.transform);
+            alternateProjectileOne = false;
+        }
+        else
+        {
+            GameObject newProjectile = Instantiate(projectileDark, slowTurret1.transform.position, rotationAngle);
+            newProjectile.transform.LookAt(player.transform);
+            alternateProjectileOne = true;
+        }
     }
 
     public void shootshottwo()
     {
         //This rotation doesn't do anything because it's immediately overwritten but I'm too lazy to define a different spawn rotation
         var rotationAngle = Quaternion.LookRotation(slowTurret2.transform.position - transform.position);
-        GameObject newProjectile = Instantiate(projectile, slowTurret2.transform.position, rotationAngle);
-        newProjectile.transform.LookAt(player.transform);
+        if (alternateProjectileTwo)
+        {
+            GameObject newProjectile = Instantiate(projectileBright, slowTurret2.transform.position, rotationAngle);
+            newProjectile.transform.LookAt(player.transform);
+            alternateProjectileTwo = false;
+        }
+        else
+        {
+            GameObject newProjectile = Instantiate(projectileDark, slowTurret2.transform.position, rotationAngle);
+            newProjectile.transform.LookAt(player.transform);
+            alternateProjectileTwo = true;
+        }
     }
 
     public void shootfastshot()
@@ -137,7 +163,16 @@ public class ShootScript : MonoBehaviour
 
     public void PlaceMineAtPlayer()
     {
-        Instantiate(mine, player.transform.position, player.transform.rotation);
+        GameObject newMine = Instantiate(mine, player.transform.position, player.transform.rotation);
+        newMine.GetComponent<MineExplodeScript>().ChangeColor(mineBright, null);
+        if (mineBright)
+        {
+            mineBright = false;
+        }
+        else
+        {
+            mineBright = true;
+        }
         ChangeBlockingCube();
     }
 
@@ -156,13 +191,21 @@ public class ShootScript : MonoBehaviour
 
     }
 
+    public void HideAllBlockingCubes()
+    {
+        foreach(GameObject singleCube in blocking_cubes)
+        {
+            singleCube.SetActive(false);
+        }
+    }
+
     public void SpawnProjectileWave()
     {
         if (alternateWave)
         {
             foreach (Vector3 spawnLocation in spawnLocations)
             {
-                GameObject newProjectile = Instantiate(blackWaveProjectile, spawnLocation, spawnRotation);
+                GameObject newProjectile = Instantiate(whiteWaveProjectile, spawnLocation, spawnRotation);
             }
             alternateWave = false;
         }

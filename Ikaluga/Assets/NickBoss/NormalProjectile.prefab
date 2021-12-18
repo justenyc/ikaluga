@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1537253128591360129}
   - component: {fileID: 1537253128591360128}
   - component: {fileID: 2744986026462870921}
+  - component: {fileID: -5359797123937289269}
   m_Layer: 0
   m_Name: NormalProjectile
   m_TagString: Untagged
@@ -113,7 +114,24 @@ MonoBehaviour:
   bright: 1
   damage: 3
   originObject: {fileID: 0}
-  lightMainColor: {r: 0, g: 0, b: 0, a: 0}
+  lightMainColor: {r: 1, g: 1, b: 1, a: 0}
   lightEmissiveColor: {r: 0, g: 0, b: 0, a: 0}
   darkMainColor: {r: 0, g: 0, b: 0, a: 0}
   darkEmissiveColor: {r: 0, g: 0, b: 0, a: 0}
+  mr: {fileID: 0}
+--- !u!54 &-5359797123937289269
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537253128591360134}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

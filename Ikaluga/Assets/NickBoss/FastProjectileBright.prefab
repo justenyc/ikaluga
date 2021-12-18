@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9149391234839716313}
   - component: {fileID: 9149391234839716312}
   - component: {fileID: 5599213993240599761}
+  - component: {fileID: 6744481565231698741}
   m_Layer: 6
   m_Name: FastProjectileBright
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e87b7af9d59e210409fa5cfc0e4bf627, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,7 +114,24 @@ MonoBehaviour:
   bright: 1
   damage: 1
   originObject: {fileID: 0}
-  lightMainColor: {r: 0, g: 0, b: 0, a: 0}
-  lightEmissiveColor: {r: 0, g: 0, b: 0, a: 0}
+  lightMainColor: {r: 1, g: 1, b: 1, a: 0}
+  lightEmissiveColor: {r: 0.5019608, g: 0.5019608, b: 0.2509804, a: 0}
   darkMainColor: {r: 0, g: 0, b: 0, a: 0}
-  darkEmissiveColor: {r: 0, g: 0, b: 0, a: 0}
+  darkEmissiveColor: {r: 0.1254902, g: 0, b: 0.5019608, a: 0}
+  mr: {fileID: 0}
+--- !u!54 &6744481565231698741
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149391234839716318}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

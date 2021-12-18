@@ -379,7 +379,7 @@ namespace StarterAssets
 					aS.pitch = Random.Range(1, 1.2f);
 
 				aS.volume = 0.1f;
-				aS.PlayOneShot(se.GetClip("IkalugaBullet"));
+				//aS.PlayOneShot(se.GetClip("IkalugaBullet"));
 
 				shootCD = fireRate;
 				this.GetComponent<IKControl>().ikActive = true;
