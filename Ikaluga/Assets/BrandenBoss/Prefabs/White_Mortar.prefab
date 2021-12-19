@@ -355,6 +355,7 @@ MonoBehaviour:
   brightColor: {r: 0.5, g: 0.5, b: 0.2509804, a: 1}
   darkColor: {r: 0.1254902, g: 0, b: 0.5019608, a: 1}
   rendererType: 0
+  mat: {fileID: 0}
   meshRenderer: {fileID: 5445594148086408300}
   skinnedMeshRenderer: {fileID: 0}
 --- !u!82 &1034859644035191636
