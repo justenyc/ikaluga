@@ -20,6 +20,6 @@ public class OniIdle : OniInterface
     // Update is called once per frame
     public void StateUpdate()
     {
-        
+        manager.stateChangeTimer = 10f;
     }
 }

@@ -16,6 +16,9 @@ public class HealthBoss : Health
     public delegate void deathDelagate();
     public event deathDelagate deathEvent;
 
+    public delegate void halfDelegate();
+    public event halfDelegate halfhealth;
+
     private void Start()
     {
         base.Start();
@@ -96,7 +99,6 @@ public class HealthBoss : Health
 
     public override void DealDamage(float value)
     {
-        Debug.Log("DealDamage value = " + value);
         if (value > 0)
         {
             ChangeFresnelColor(Color.red);
@@ -112,11 +114,21 @@ public class HealthBoss : Health
             audioSource.PlayOneShot(GetComponent<SoundEffects>().GetClip("Shield"));
         }
         base.DealDamage(value);
+        
+        if (currentHealth <= maxHealth / 2)
+        {
+            if (halfhealth != null)
+                halfhealth();
+        }
     }
 
     public override void Die()
     {
-        meshRenderer.enabled = false;
+        if (meshRenderer != null)
+            meshRenderer.enabled = false;
+        else
+            skinnedMeshRenderer.enabled = false;
+
         GetComponent<Collider>().enabled = false;
         if(deathEvent != null)
         {
