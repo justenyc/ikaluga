@@ -57,7 +57,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 13
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 6.88}
 --- !u!1 &5782811171703685520
 GameObject:
@@ -745,6 +745,7 @@ MonoBehaviour:
   brightColor: {r: 0.5, g: 0.5, b: 0.2509804, a: 1}
   darkColor: {r: 1, g: 0, b: 1, a: 0}
   rendererType: 0
+  mat: {fileID: 0}
   meshRenderer: {fileID: 5782811171703685532}
   skinnedMeshRenderer: {fileID: 0}
 --- !u!114 &427567509475905897
