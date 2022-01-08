@@ -9,6 +9,15 @@ public class BossDieScript : MonoBehaviour
 
     public GameObject LosingScreen;
     public GameObject VictoryScreen;
+    public GameObject TimelineCube;
+    public GameObject VictoryPortal;
+    public GameObject Countdown;
+    public GameObject Player;
+
+    public GameObject BeanBoss;
+    public GameObject[] ExplodeObjects;
+
+    public GameObject ExplosionEffect;
 
     public int HeartCount;
 
@@ -35,14 +44,33 @@ public class BossDieScript : MonoBehaviour
 
     public void EndGamePlayerWins()
     {
+        Destroy(TimelineCube);
+        Destroy(Countdown);
+        Invoke("DestroyStage", 3);
+
         VictoryScreen.SetActive(true);
         Debug.Log("GAME ENDED ALL BOSS HEARTS DEAD");
     }
 
     public void EndGameBossWins()
     {
+        Player.GetComponent<HealthPlayer>().Die();
+        Cursor.lockState = CursorLockMode.Confined;
+        Destroy(Countdown);
         LosingScreen.SetActive(true);
         Debug.Log("GAME ENDED PLAYER DEAD");
+    }
+
+    void DestroyStage()
+    {
+        foreach (GameObject currentObj in ExplodeObjects)
+        {
+            Debug.Log(currentObj.transform);
+            Instantiate(ExplosionEffect, currentObj.transform.position, transform.rotation);
+            Destroy(currentObj);
+        }
+        BeanBoss.GetComponent<Rigidbody>().AddForce(new Vector3(10, 10, 0));
+        VictoryPortal.SetActive(true);
     }
 }
 

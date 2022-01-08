@@ -36,14 +36,14 @@ public class missile : Projectile
 
         if(upTime > 0)
         {
-            transform.position += transform.up * missileSpeed * Time.deltaTime;
+            transform.position += transform.up * 5 * Time.deltaTime;
         }
         else
         {
             sc.enabled = true;
-            float step = missileSpeed/5 * Time.deltaTime;
-            //transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-            transform.position = Vector3.Lerp(transform.position, target.position, step);
+            float step = missileSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+            //transform.position = Vector3.Lerp(transform.position, target.position, step);
         }
         
 
