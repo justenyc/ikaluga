@@ -362,12 +362,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac1b1663796a094ca64ef0f3bbdbcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 250
+  maxHealth: 220
   currentHealth: 0
   bright: 1
   brightColor: {r: 0.5, g: 0.5, b: 0.2509804, a: 1}
   darkColor: {r: 0.1254902, g: 0, b: 0.5019608, a: 1}
   rendererType: 0
+  mat: {fileID: 0}
   meshRenderer: {fileID: 7915299687074649814}
   skinnedMeshRenderer: {fileID: 0}
 --- !u!114 &898041044411908529
@@ -382,8 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5e349b8378f2744863fb0c1087dfe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDelay: 5
-  maxDelay: 15
+  minDelay: 6
+  maxDelay: 16
   shotPoint: {fileID: 3296062182274699800}
   missile: {fileID: 7924797881503933846, guid: 8e26b859b3cde0e469bb2f6c14f6d0ec, type: 3}
   deathParticle: {fileID: 0}
