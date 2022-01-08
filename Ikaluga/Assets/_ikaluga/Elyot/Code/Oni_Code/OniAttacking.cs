@@ -19,18 +19,31 @@ public class OniAttacking : OniInterface
 
     public void StateStart()
     {
+        int r = Random.Range(1, 11);
+        Debug.Log(r);
+        if (r > 5)
+            manager.myHealth.bright = !manager.myHealth.bright;
+
         manager.FacePlayer();
         if (manager.GetComponent<HealthBoss>().currentHealth <= manager.GetComponent<HealthBoss>().maxHealth / 2)
-            manager.anim.SetInteger("AnimState", 1);// Random.Range(1, 4));
+            manager.anim.SetInteger("AnimState", 3);// Random.Range(1, 4));
         else
-            manager.anim.SetInteger("AnimState", 1);//Random.Range(1, 3));
+            manager.anim.SetInteger("AnimState", 3);//Random.Range(1, 3));
     }
 
     public void StateUpdate()
     {
+        //Anim event sets AnimState to 0
         if(manager.anim.GetInteger("AnimState") < 1)
         {
-            manager.ChangeState(new OniPassive(manager));
+            if (manager.myHealth.currentHealth <= manager.myHealth.maxHealth / 2)
+            {
+                manager.ChangeState(new OniAggressive(manager));
+            }
+            else
+            {
+                manager.ChangeState(new OniPassive(manager));
+            }
         }
     }
 }

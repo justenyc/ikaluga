@@ -52,7 +52,7 @@ public class Shockwave : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Projectile: " + collision.collider.gameObject);
+        Debug.Log("Shockwave: " + collision.collider.gameObject);
         if (collision.collider.gameObject != this.originObject)
         {
             try
@@ -83,5 +83,6 @@ public class Shockwave : Projectile
 
             }
         }
+        this.GetComponent<SphereCollider>().enabled = false;
     }
 }
