@@ -14155,6 +14155,7 @@ Transform:
   - {fileID: 1539349843}
   - {fileID: 394263456}
   - {fileID: 2003271734}
+  - {fileID: 1632234567594989}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22354,7 +22355,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1256356825}
     m_Modifications:
     - target: {fileID: 27522245361063792, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
       propertyPath: warpCanvas
@@ -22371,7 +22372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2642228712843940508, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2642228712843940508, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22417,8 +22418,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken_Portal
       objectReference: {fileID: 0}
+    - target: {fileID: 4366961693181522960, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
+      propertyPath: m_Size.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366961693181522960, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
+      propertyPath: m_Size.y
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
+--- !u!4 &1632234567594989 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2642228712843940508, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
+  m_PrefabInstance: {fileID: 1632234567594988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &598961616019934748
 PrefabInstance:
   m_ObjectHideFlags: 0

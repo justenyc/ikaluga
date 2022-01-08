@@ -2129,6 +2129,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1256356825}
     m_Modifications:
+    - target: {fileID: 27522245361063792, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
+      propertyPath: warpCanvas
+      value: 
+      objectReference: {fileID: 1192140014}
+    - target: {fileID: 27522245361063792, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
+      propertyPath: bossNameText
+      value: 
+      objectReference: {fileID: 1192140015}
     - target: {fileID: 2642228712843940508, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2176,6 +2184,14 @@ PrefabInstance:
     - target: {fileID: 2642228712843940515, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
       propertyPath: m_Name
       value: Broken_Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366961693181522960, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
+      propertyPath: m_Size.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366961693181522960, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
+      propertyPath: m_Size.y
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7deec26680fd2a64a9b690048f7cb2fd, type: 3}
@@ -6055,6 +6071,14 @@ PrefabInstance:
     - target: {fileID: 3541931390710124666, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
       propertyPath: scene
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545265002777622833, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: m_Size.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545265002777622833, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: m_Size.y
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
@@ -18498,6 +18522,14 @@ PrefabInstance:
       propertyPath: scene
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4545265002777622833, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: m_Size.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545265002777622833, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: m_Size.y
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
 --- !u!4 &1539349843 stripped
@@ -23735,6 +23767,14 @@ PrefabInstance:
     - target: {fileID: 3541931390710124666, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
       propertyPath: scene
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545265002777622833, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: m_Size.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545265002777622833, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: m_Size.y
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
