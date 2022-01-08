@@ -86,7 +86,7 @@ public class HealthPlayer : Health
             shieldEffect.SetActive(true);
         }
 
-        Debug.Log(this.name + " Current Health = " + currentHealth); 
+        //Debug.Log(this.name + " Current Health = " + currentHealth); 
         if (currentHealth <= 0)
         {
             Die();

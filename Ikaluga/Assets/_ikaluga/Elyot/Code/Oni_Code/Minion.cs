@@ -23,7 +23,6 @@ public class Minion : MonoBehaviour
     void Start()
     {
         ph = FindObjectOfType<HealthPlayer>();
-        boss.GetComponent<HealthBoss>().deathEvent += DieWithBoss;
         myHealth = this.GetComponent<HealthBoss>();
 
         anim = oni.GetComponentInChildren<Animator>();
@@ -34,9 +33,14 @@ public class Minion : MonoBehaviour
         StartCoroutine(UpdateDelay());
     }
 
+    private void OnEnable()
+    {
+        boss.GetComponent<HealthBoss>().deathEvent += DieWithBoss;
+    }
+
     IEnumerator UpdateDelay()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         delayUpdate = false;
         anim.SetInteger("AnimState", 0);
     }
@@ -126,9 +130,14 @@ public class Minion : MonoBehaviour
         anim.SetFloat("Move", moveSpeed);
     }
 
+    private void OnDisable()
+    {
+        boss.GetComponent<HealthBoss>().deathEvent -= DieWithBoss;
+    }
+
     void DieWithBoss()
     {
+        Debug.Log("DieWithBoss()");
         myHealth.Die();
-        boss.GetComponent<HealthBoss>().deathEvent -= DieWithBoss;
     }
 }

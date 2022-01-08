@@ -16,7 +16,12 @@ public class OniAggressive : OniInterface
     
     public void StateStart()
     {
-        manager.moveSpeed = 15;
+        int r = Random.Range(1, 10);
+        if (r < 3)
+            manager.moveSpeed = 15f;
+        else
+            manager.moveSpeed = 8f;
+        
         manager.turnSpeed = 3f;
         attackTimer = Random.Range(3f, 7f);
     }

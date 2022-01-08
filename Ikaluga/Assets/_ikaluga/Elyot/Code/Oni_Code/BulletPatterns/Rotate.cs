@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
+    public float lifeTime = 20f;
     public float rotationSpeed = 1f;
     public Vector3 axes = Vector3.zero;
 
     private void Start()
     {
-        Destroy(this.gameObject, 20f);
+        if (lifeTime != 0)
+            Destroy(this.gameObject, 20f);
     }
 
     // Update is called once per frame

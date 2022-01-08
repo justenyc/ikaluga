@@ -15,7 +15,7 @@ public class Oni : MonoBehaviour
     public GameObject oni;
     [HideInInspector] public HealthPlayer ph;
     public float stateChangeTimer = 10f;
-    Flag flag; 
+    public Flag startFlag; 
 
     OniInterface state;
 
@@ -24,16 +24,18 @@ public class Oni : MonoBehaviour
     public float moveSpeed;
     public float turnSpeed = 1;
     public Minion[] minions;
+    public GameObject flag;
+    public GameObject flagSpinner;
 
     // Start is called before the first frame update
     void Start()
     {
-        flag = FindObjectOfType<Flag>();
-        flag.GetComponent<HealthBoss>().deathEvent += FlagListener;
+        startFlag.GetComponent<HealthBoss>().deathEvent += FlagListener;
         ph = FindObjectOfType<HealthPlayer>();
         
         myHealth = this.GetComponent<HealthBoss>();
-        myHealth.halfhealth += HalfHealthDance;
+        myHealth.phaseOne += PhaseOneDance;
+        myHealth.phaseTwo += PhaseTwoDance;
 
         anim = oni.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -49,15 +51,24 @@ public class Oni : MonoBehaviour
         //Debug.Log("Oni State: " + state);
     }
 
-    void HalfHealthDance()
+    void PhaseTwoDance()
     {
         stateChangeTimer = 5f;
         state = new OniAttacking(this, 4);
-        myHealth.halfhealth -= HalfHealthDance;
+        Instantiate(flag, transform.position + new Vector3(0, 6, 0), Quaternion.identity);
+        myHealth.phaseTwo -= PhaseTwoDance;
         foreach (Minion m in minions)
         {
             m.gameObject.SetActive(true);
         }
+    }
+
+    void PhaseOneDance()
+    {
+        state = new OniAttacking(this, 4);
+        Instantiate(flag, transform.position + new Vector3(0, 6, 0), Quaternion.identity);
+        myHealth.phaseOne -= PhaseOneDance;
+        flagSpinner.SetActive(true);
     }
 
     public void StateCountdown()
@@ -130,7 +141,7 @@ public class Oni : MonoBehaviour
 
     public void FlagListener()
     {
-        flag.GetComponent<HealthBoss>().deathEvent -= FlagListener;
+        startFlag.GetComponent<HealthBoss>().deathEvent -= FlagListener;
         state = new OniAttacking(this, 1);
     }
 

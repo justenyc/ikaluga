@@ -16,8 +16,11 @@ public class HealthBoss : Health
     public delegate void deathDelagate();
     public event deathDelagate deathEvent;
 
-    public delegate void halfDelegate();
-    public event halfDelegate halfhealth;
+    public delegate void phaseOneDelegate();
+    public event phaseOneDelegate phaseOne;
+
+    public delegate void phaseTwoDelegate();
+    public event phaseTwoDelegate phaseTwo;
 
     private void Start()
     {
@@ -115,10 +118,16 @@ public class HealthBoss : Health
         }
         base.DealDamage(value);
         
-        if (currentHealth <= maxHealth / 2)
+        if (currentHealth <= maxHealth * 0.6f)
         {
-            if (halfhealth != null)
-                halfhealth();
+            if (phaseOne != null)
+                phaseOne();
+        }
+
+        if (currentHealth <= maxHealth * 0.3f)
+        {
+            if (phaseTwo != null)
+                phaseTwo();
         }
     }
 
@@ -130,6 +139,7 @@ public class HealthBoss : Health
             skinnedMeshRenderer.enabled = false;
 
         GetComponent<Collider>().enabled = false;
+
         if(deathEvent != null)
         {
             deathEvent();
