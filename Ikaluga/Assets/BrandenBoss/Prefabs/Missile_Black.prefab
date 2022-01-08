@@ -149,6 +149,8 @@ MonoBehaviour:
   mr: {fileID: 0}
   upTime: 2.5
   particles: {fileID: 9221979518356943653, guid: bcff561fd39eace4f956dc581b36784e, type: 3}
+  minSpeed: 3
+  maxSpeed: 6
 --- !u!114 &6768038826493455046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac1b1663796a094ca64ef0f3bbdbcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 30
   currentHealth: 0
   bright: 0
   brightColor: {r: 0.5, g: 0.5, b: 0.2509804, a: 1}

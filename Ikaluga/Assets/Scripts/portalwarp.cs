@@ -16,7 +16,6 @@ public class portalwarp : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("is this happening");
         if (collision.CompareTag("Player"))
         {
             

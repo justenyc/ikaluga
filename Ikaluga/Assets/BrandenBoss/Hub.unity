@@ -5926,6 +5926,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1256356825}
     m_Modifications:
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: scene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: warpCanvas
+      value: 
+      objectReference: {fileID: 1192140014}
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: bossNameText
+      value: 
+      objectReference: {fileID: 1192140015}
     - target: {fileID: 2820805834691780482, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
       propertyPath: m_Name
       value: Portal (1)
@@ -15407,6 +15419,123 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &1192140013
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359872048350501857, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213389456290474360, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_Name
+      value: Warp Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213389456290474360, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+--- !u!1 &1192140014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8213389456290474360, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+  m_PrefabInstance: {fileID: 1192140013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1192140015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7940168324872587233, guid: d4f56d92875feb748b07e9707801b24d, type: 3}
+  m_PrefabInstance: {fileID: 1192140013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1209993937
 GameObject:
   m_ObjectHideFlags: 0
@@ -18239,6 +18368,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1256356825}
     m_Modifications:
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: scene
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: warpCanvas
+      value: 
+      objectReference: {fileID: 1192140014}
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: bossNameText
+      value: 
+      objectReference: {fileID: 1192140015}
     - target: {fileID: 2820805834691780482, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
       propertyPath: m_Name
       value: Portal (3)
@@ -18309,6 +18450,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1256356825}
     m_Modifications:
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: scene
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: warpCanvas
+      value: 
+      objectReference: {fileID: 1192140014}
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: bossNameText
+      value: 
+      objectReference: {fileID: 1192140015}
     - target: {fileID: 2820805834691780482, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
       propertyPath: m_Name
       value: Portal
@@ -23535,6 +23688,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1256356825}
     m_Modifications:
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: scene
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: warpCanvas
+      value: 
+      objectReference: {fileID: 1192140014}
+    - target: {fileID: 283535065884613201, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
+      propertyPath: bossNameText
+      value: 
+      objectReference: {fileID: 1192140015}
     - target: {fileID: 2820805834691780482, guid: c78e29b1e5d90224597e039eb00024ed, type: 3}
       propertyPath: m_Name
       value: Portal (2)

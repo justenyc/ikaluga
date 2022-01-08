@@ -10,6 +10,9 @@ public class missile : Projectile
     private SphereCollider sc;
     public GameObject particles;
     private HealthBoss hb;
+    private float missileSpeed;
+    public float minSpeed = 4f;
+    public float maxSpeed = 5.5f;
 
     // Update is called once per frame
     private void Start()
@@ -23,6 +26,7 @@ public class missile : Projectile
         Destroy(this.gameObject, lifetime);
         this.GetComponentInParent<HealthBoss>().bright = bright;
         ChangeColor(bright);
+        missileSpeed = Random.Range(minSpeed, maxSpeed);
     }
 
     void Update()
@@ -32,12 +36,12 @@ public class missile : Projectile
 
         if(upTime > 0)
         {
-            transform.position += transform.up * moveSpeed * Time.deltaTime;
+            transform.position += transform.up * missileSpeed * Time.deltaTime;
         }
         else
         {
             sc.enabled = true;
-            float step = moveSpeed/5 * Time.deltaTime;
+            float step = missileSpeed/5 * Time.deltaTime;
             //transform.position = Vector3.MoveTowards(transform.position, target.position, step);
             transform.position = Vector3.Lerp(transform.position, target.position, step);
         }
