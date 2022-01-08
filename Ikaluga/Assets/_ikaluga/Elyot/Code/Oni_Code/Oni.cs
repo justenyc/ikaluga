@@ -9,21 +9,28 @@ public class Oni : MonoBehaviour
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public GameObject oni;
     [HideInInspector] public HealthPlayer ph;
-    public float stateChangeTimer = 10;
+    public float stateChangeTimer = 10f;
     public float aggression = 7;
+    Flag flag; 
 
     OniInterface state;
 
     [Space(10)]
     public Vector3 direction;
     public float moveSpeed;
+    public float turnSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
     {
+        flag = FindObjectOfType<Flag>();
+        flag.GetComponent<HealthBoss>().deathEvent += FlagListener;
         oni = GameObject.Find("Oni");
         ph = FindObjectOfType<HealthPlayer>();
+        
         myHealth = this.GetComponent<HealthBoss>();
+        myHealth.halfhealth += HalfHealthDance;
+
         anim = oni.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         ChangeFresnelColor(myHealth.bright);
@@ -34,8 +41,16 @@ public class Oni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ChangeState();
+        ChangeState();
         state.StateUpdate();
+        Debug.Log("Oni State: " + state);
+    }
+
+    void HalfHealthDance()
+    {
+        stateChangeTimer = 5f;
+        state = new OniAttacking(this, 4);
+        myHealth.halfhealth -= HalfHealthDance;
     }
 
     void ChangeState()
@@ -44,7 +59,7 @@ public class Oni : MonoBehaviour
             stateChangeTimer -= Time.deltaTime;
         else
         {
-            float r = 0;// Random.Range(0, 10);
+            float r = 0;//Random.Range(0, 11);
             if (r > aggression)
             {
                 state = new OniAggressive(this);
@@ -74,6 +89,15 @@ public class Oni : MonoBehaviour
         direction = new Vector3(ph.transform.position.x - transform.position.x, 0, ph.transform.position.z - transform.position.z).normalized;
     }
 
+    public void FacePlayer()
+    {
+        TrackPlayer();
+        float xDistance = (transform.position.x + direction.x) - transform.position.x;
+        float zDistance = (transform.position.z + direction.z) - transform.position.z;
+        float angle = Mathf.Atan2(xDistance, zDistance) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
+    }
+
     public void RandomDirection()
     {
         Vector2 randomDirection = Random.insideUnitCircle;
@@ -84,9 +108,8 @@ public class Oni : MonoBehaviour
     {
         float xDistance = (transform.position.x + direction.x) - transform.position.x;
         float zDistance = (transform.position.z + direction.z) - transform.position.z;
-        float angle = Mathf.Atan2(zDistance, xDistance) * Mathf.Rad2Deg;
-        angle -= 90f;
-        transform.rotation = Quaternion.Euler(new Vector3(0, -angle, 0));
+        float angle = Mathf.Atan2(xDistance, zDistance) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0,angle,0)), Time.deltaTime * turnSpeed);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -97,8 +120,14 @@ public class Oni : MonoBehaviour
         }
     }
 
-    public void Attack(string s)
+    public void FlagListener()
     {
+        flag.GetComponent<HealthBoss>().deathEvent -= FlagListener;
+        state = new OniPassive(this);
+    }
 
+    public void ChangeState(OniInterface newState)
+    {
+        state = newState;
     }
 }
