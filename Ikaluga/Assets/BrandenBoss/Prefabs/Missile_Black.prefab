@@ -147,10 +147,10 @@ MonoBehaviour:
   darkMainColor: {r: 0, g: 0, b: 0, a: 0}
   darkEmissiveColor: {r: 1, g: 0, b: 1, a: 0}
   mr: {fileID: 0}
-  upTime: 2.5
+  upTime: 2.2
   particles: {fileID: 9221979518356943653, guid: bcff561fd39eace4f956dc581b36784e, type: 3}
-  minSpeed: 3
-  maxSpeed: 6
+  minSpeed: 5
+  maxSpeed: 10
 --- !u!114 &6768038826493455046
 MonoBehaviour:
   m_ObjectHideFlags: 0
