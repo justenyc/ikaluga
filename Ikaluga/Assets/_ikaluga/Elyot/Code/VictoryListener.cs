@@ -6,6 +6,7 @@ public class VictoryListener : MonoBehaviour
 {
     public HealthBoss boss;
     public GameObject winstuff;
+    public GameObject BGM;
 
     private void Start()
     {
@@ -15,5 +16,11 @@ public class VictoryListener : MonoBehaviour
     void Victory()
     {
         winstuff.SetActive(true);
+        BGM.SetActive(false);
+        Flag[] flags = FindObjectsOfType<Flag>();
+        foreach (Flag f in flags)
+        {
+            f.gameObject.SetActive(false);
+        }
     }
 }

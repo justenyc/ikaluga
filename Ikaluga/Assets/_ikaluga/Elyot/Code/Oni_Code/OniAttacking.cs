@@ -21,6 +21,7 @@ public class OniAttacking : OniInterface
 
     public void StateStart()
     {
+        manager.GetComponent<Rigidbody>().velocity = Vector3.zero;
         manager.FacePlayer();
         if (manager.GetComponent<HealthBoss>().currentHealth <= manager.GetComponent<HealthBoss>().maxHealth / 2)
             manager.anim.SetInteger("AnimState", Random.Range(1, 4));
@@ -33,7 +34,7 @@ public class OniAttacking : OniInterface
         //Anim event sets AnimState to 0
         if(manager.anim.GetInteger("AnimState") < 1)
         {
-            if (manager.myHealth.currentHealth <= manager.myHealth.maxHealth / 2)
+            if (manager.myHealth.currentHealth <= manager.myHealth.maxHealth * 0.3f)
             {
                 manager.ChangeState(new OniAggressive(manager));
             }

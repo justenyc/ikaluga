@@ -51,7 +51,7 @@ public class Shockwave : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Shockwave: " + collision.collider.gameObject);
+        //Debug.Log("Shockwave: " + collision.collider.gameObject);
         if (collision.collider.gameObject != this.originObject)
         {
             try
