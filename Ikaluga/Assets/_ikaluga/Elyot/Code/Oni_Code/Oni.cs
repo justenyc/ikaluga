@@ -1,7 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/* TODO
+ * Music
+ * Sound Effects
+ * Death Screen
+ * Health Bar
+ * Win Screen
+ * Adds
+ * Attack after flag breaks
+ * Lightning Strike after flag breaks
+ */
 public class Oni : MonoBehaviour
 {
     [HideInInspector] public HealthBoss myHealth;
@@ -10,7 +19,6 @@ public class Oni : MonoBehaviour
     [HideInInspector] public GameObject oni;
     [HideInInspector] public HealthPlayer ph;
     public float stateChangeTimer = 10f;
-    public float aggression = 7;
     Flag flag; 
 
     OniInterface state;
@@ -41,9 +49,8 @@ public class Oni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChangeState();
         state.StateUpdate();
-        Debug.Log("Oni State: " + state);
+        //Debug.Log("Oni State: " + state);
     }
 
     void HalfHealthDance()
@@ -53,22 +60,13 @@ public class Oni : MonoBehaviour
         myHealth.halfhealth -= HalfHealthDance;
     }
 
-    void ChangeState()
+    public void StateCountdown()
     {
         if (stateChangeTimer > 0)
             stateChangeTimer -= Time.deltaTime;
         else
         {
-            float r = 0;//Random.Range(0, 11);
-            if (r > aggression)
-            {
-                state = new OniAggressive(this);
-            }
-            else
-            {
-                state = new OniPassive(this);
-            }
-            stateChangeTimer = Random.Range(5f, 15f);
+            
         }
     }
    

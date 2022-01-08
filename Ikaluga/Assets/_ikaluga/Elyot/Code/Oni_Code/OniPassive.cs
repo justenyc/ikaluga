@@ -11,12 +11,13 @@ public class OniPassive : OniInterface
     public OniPassive(Oni managerRef)
     {
         manager = managerRef;
-        attackTimer = manager.stateChangeTimer / 2;
+        attackTimer = Random.Range(3f, 7f);
         StateStart();
     }
     
     public void StateStart()
     {
+        manager.moveSpeed = 1;
         manager.RandomDirection();
     }
 
