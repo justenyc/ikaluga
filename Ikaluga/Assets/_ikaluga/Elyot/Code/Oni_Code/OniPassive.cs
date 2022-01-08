@@ -11,7 +11,7 @@ public class OniPassive : OniInterface
     public OniPassive(Oni managerRef)
     {
         manager = managerRef;
-        attackTimer = Random.Range(3f, 7f);
+        attackTimer = Random.Range(3f, 5f);
         StateStart();
     }
     

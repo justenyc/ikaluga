@@ -17,23 +17,36 @@ public class OniAttacks : MonoBehaviour
         switch (s)
         {
             case "Cascade":
-                Instantiate(cascade, bulletSpawnPoint.position, Quaternion.Euler(bulletSpawnPoint.rotation.eulerAngles - new Vector3(0, 90, 0)));
+                GameObject c = Instantiate(cascade, bulletSpawnPoint.position, Quaternion.Euler(bulletSpawnPoint.rotation.eulerAngles - new Vector3(0, 90, 0)));
+                Cascade[] cascades = c.GetComponentsInChildren<Cascade>();
+                foreach (Cascade ca in cascades)
+                {
+                    ca.SetProjColor(this.GetComponentInParent<HealthBoss>());
+                }
                 break;
 
             case "RotatingCascade":
-                Instantiate(rotatingCascade, bulletSpawnPoint.position, Quaternion.Euler(bulletSpawnPoint.rotation.eulerAngles - new Vector3(0, 90, 0)));
+                GameObject rc = Instantiate(rotatingCascade, bulletSpawnPoint.position, Quaternion.Euler(bulletSpawnPoint.rotation.eulerAngles - new Vector3(0, 90, 0)));
+                Cascade[] rotatingCascades = rc.GetComponentsInChildren<Cascade>();
+                foreach (Cascade ca in rotatingCascades)
+                {
+                    ca.SetProjColor(this.GetComponentInParent<HealthBoss>());
+                }
                 break;
 
             case "Sphere":
-                Instantiate(sphere, bulletSpawnPoint.position, Quaternion.Euler(bulletSpawnPoint.rotation.eulerAngles - new Vector3(0, 90, 0)));
+                GameObject sp = Instantiate(sphere, bulletSpawnPoint.position, Quaternion.Euler(bulletSpawnPoint.rotation.eulerAngles - new Vector3(0, 90, 0)));
+                sp.GetComponent<Sphere>().SetProjColor(this.GetComponentInParent<HealthBoss>());
                 break;
 
             case "Swirl":
-                Instantiate(swirl, bulletSpawnPoint.position, Quaternion.Euler(bulletSpawnPoint.rotation.eulerAngles - new Vector3(0,90,0)));
+                GameObject sw = Instantiate(swirl, bulletSpawnPoint.position, Quaternion.Euler(bulletSpawnPoint.rotation.eulerAngles - new Vector3(0,90,0)));
+                sw.GetComponent<Swirl>().SetProjColor(this.GetComponentInParent<HealthBoss>());
                 break;
 
             case "Shockwave":
-                Instantiate(shockwave, bulletSpawnPoint.position, Quaternion.identity);
+                GameObject sh = Instantiate(shockwave, bulletSpawnPoint.position, Quaternion.identity);
+                sh.GetComponent<Shockwave>().ChangeColor(this.GetComponentInParent<HealthBoss>().bright);
                 break;
 
             default:
@@ -44,6 +57,13 @@ public class OniAttacks : MonoBehaviour
 
     public void ResetAnimState()
     {
-        manager.anim.SetInteger("AnimState", 0);
+        try
+        {
+            manager.anim.SetInteger("AnimState", 0);
+        }
+        catch
+        {
+
+        }
     }
 }

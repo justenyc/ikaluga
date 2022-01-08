@@ -8,7 +8,6 @@ public class Shockwave : Projectile
     void Start()
     {
         mr = this.GetComponent<MeshRenderer>();
-        ChangeColor(FindObjectOfType<Oni>().GetComponent<HealthBoss>().bright);
         //ChangeColor(bright);
     }
 
@@ -30,7 +29,7 @@ public class Shockwave : Projectile
         transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(20, 20, 20), 1/lifetime * Time.deltaTime);
     }
 
-    void ChangeColor(bool b)
+    public void ChangeColor(bool b)
     {
         if (mr == null)
         {

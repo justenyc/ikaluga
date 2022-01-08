@@ -15,13 +15,20 @@ public class IKTargetPlacer : MonoBehaviour
 
     void Update()
     {
-        Vector3 direction = transform.position - player.transform.position;
-        transform.rotation = Quaternion.LookRotation(direction);
-        RaycastHit hit;
-
-        if (Physics.Raycast(followCamera.transform.position, followCamera.transform.forward, out hit, 100f, mask))
+        try
         {
-            transform.position = hit.point;
+            Vector3 direction = transform.position - player.transform.position;
+            transform.rotation = Quaternion.LookRotation(direction);
+            RaycastHit hit;
+
+            if (Physics.Raycast(followCamera.transform.position, followCamera.transform.forward, out hit, 100f, mask))
+            {
+                transform.position = hit.point;
+            }
+        }
+        catch
+        {
+
         }
     }
 }

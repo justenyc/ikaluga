@@ -12,11 +12,6 @@ public class Swirl : MonoBehaviour
     void Start()
     {
         SetHealthBoss();
-        projectiles = GetComponentsInChildren<Projectile>();
-        foreach (Projectile p in projectiles)
-            p.gameObject.SetActive(false);
-
-        SetProjColor(boss);
         StartCoroutine(DelayActivate(waitTime));
     }
 
@@ -47,8 +42,24 @@ public class Swirl : MonoBehaviour
         }
     }
 
-    void SetProjColor(HealthBoss hb)
+    public void SetHealthBoss(HealthBoss hb)
     {
+        try
+        {
+            boss = hb;
+        }
+        catch
+        {
+
+        }
+    }
+
+    public void SetProjColor(HealthBoss hb)
+    {
+        projectiles = GetComponentsInChildren<Projectile>();
+        foreach (Projectile p in projectiles)
+            p.gameObject.SetActive(false);
+
         try
         {
             foreach (Projectile p in projectiles)

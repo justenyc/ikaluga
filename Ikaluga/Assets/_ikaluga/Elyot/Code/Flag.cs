@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Flag : MonoBehaviour
 {
+    public AudioSource BGM;
     // Start is called before the first frame update
-    void Start()
+    private void OnDestroy()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        BGM.gameObject.SetActive(true);
+        BGM.Play();
+        BGM.loop = true;
     }
 }

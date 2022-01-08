@@ -5,17 +5,12 @@ using UnityEngine;
 public class Sphere : MonoBehaviour
 {
     public Projectile[] projectiles;
-    HealthBoss boss;
+    public HealthBoss boss;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetHealthBoss();
-        projectiles = GetComponentsInChildren<Projectile>();
-        foreach (Projectile p in projectiles)
-            p.gameObject.SetActive(false);
 
-        SetProjColor(boss);
     }
 
     public void SetHealthBoss()
@@ -30,8 +25,25 @@ public class Sphere : MonoBehaviour
         }
     }
 
-    void SetProjColor(HealthBoss hb)
+    public void SetHealthBoss(HealthBoss hb)
     {
+        try
+        {
+            boss = hb;
+        }
+        catch
+        {
+
+        }
+        projectiles = GetComponentsInChildren<Projectile>();
+        foreach (Projectile p in projectiles)
+            p.gameObject.SetActive(false);
+    }
+
+    public void SetProjColor(HealthBoss hb)
+    {
+        projectiles = GetComponentsInChildren<Projectile>();
+
         try
         {
             foreach (Projectile p in projectiles)

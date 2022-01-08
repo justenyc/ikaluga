@@ -27,10 +27,16 @@ public class OniAggressive : OniInterface
 
         if (attackTimer > 0)
             attackTimer -= Time.deltaTime;
-
-        if (Vector3.Distance(hp.transform.position, manager.transform.position) < 10f || attackTimer <= 0)
+        try
         {
-            manager.ChangeState(new OniAttacking(manager));
+            if (Vector3.Distance(hp.transform.position, manager.transform.position) < 10f || attackTimer <= 0)
+            {
+                manager.ChangeState(new OniAttacking(manager));
+            }
+        }
+        catch
+        {
+
         }
     }
 

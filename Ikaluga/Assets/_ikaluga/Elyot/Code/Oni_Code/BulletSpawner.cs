@@ -18,6 +18,6 @@ public class BulletSpawner : MonoBehaviour
 
     public void OnEnable()
     {
-        Debug.Log("BulletSpawner enabled");
+        //Debug.Log("BulletSpawner enabled");
     }
 }

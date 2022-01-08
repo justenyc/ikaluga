@@ -1,75 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/* TODO
- * Sound Effects
- * Adds
- * Attack after flag breaks
- * Lightning Strike after flag breaks
- */
-public class Oni : MonoBehaviour
+
+public class Minion : MonoBehaviour
 {
     [HideInInspector] public HealthBoss myHealth;
     public Animator anim;
     [HideInInspector] public Rigidbody rb;
     public GameObject oni;
+    public Oni boss;
     [HideInInspector] public HealthPlayer ph;
-    public float stateChangeTimer = 10f;
-    Flag flag; 
-
-    OniInterface state;
 
     [Space(10)]
     public Vector3 direction;
     public float moveSpeed;
     public float turnSpeed = 1;
-    public Minion[] minions;
+    public float attackTimer = 5f;
+    public bool coroutine = false;
+    public bool delayUpdate = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        flag = FindObjectOfType<Flag>();
-        flag.GetComponent<HealthBoss>().deathEvent += FlagListener;
         ph = FindObjectOfType<HealthPlayer>();
-        
+        boss.GetComponent<HealthBoss>().deathEvent += DieWithBoss;
         myHealth = this.GetComponent<HealthBoss>();
-        myHealth.halfhealth += HalfHealthDance;
 
         anim = oni.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         ChangeFresnelColor(myHealth.bright);
         GameObject.Find("Ogre").GetComponent<SkinnedMeshRenderer>().materials[1].SetFloat("Vector1_cb68193afe724db7996723ccea4e88f6", 1);
-        state = new OniIdle(this);
+        anim.SetInteger("AnimState", 4);
+        StartCoroutine(UpdateDelay());
+    }
+
+    IEnumerator UpdateDelay()
+    {
+        yield return new WaitForSeconds(4f);
+        delayUpdate = false;
+        anim.SetInteger("AnimState", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        state.StateUpdate();
-        //Debug.Log("Oni State: " + state);
-    }
-
-    void HalfHealthDance()
-    {
-        stateChangeTimer = 5f;
-        state = new OniAttacking(this, 4);
-        myHealth.halfhealth -= HalfHealthDance;
-        foreach (Minion m in minions)
+        if (!delayUpdate)
         {
-            m.gameObject.SetActive(true);
+            if (attackTimer > 0)
+            {
+                attackTimer -= Time.deltaTime;
+                Movement();
+            }
+            else if (attackTimer <= 0)
+            {
+                int r = Random.Range(1, 4);
+                /*if (Vector3.Distance(ph.transform.position, transform.position) < 10f)
+                {
+                    anim.SetInteger("AnimState", r);
+                    StartCoroutine(DelayNextAttack());
+                }
+                else
+                {
+                    anim.SetInteger("AnimState", r);
+                }*/
+                if (!coroutine)
+                {
+                    myHealth.bright = !myHealth.bright;
+                    ChangeFresnelColor(myHealth.bright);
+                    StartCoroutine(DelayNextAttack());
+                }
+                anim.SetInteger("AnimState", 1);
+            }
         }
     }
 
-    public void StateCountdown()
+    IEnumerator DelayNextAttack()
     {
-        if (stateChangeTimer > 0)
-            stateChangeTimer -= Time.deltaTime;
-        else
-        {
-            
-        }
+        coroutine = true;
+        yield return new WaitForSeconds(3f);
+        anim.SetInteger("AnimState", 0);
+        attackTimer = 5f;
+        coroutine = false;
     }
-   
+
     public void ChangeFresnelColor(bool b)
     {
         GameObject ogre = GameObject.Find("Ogre");
@@ -106,36 +119,16 @@ public class Oni : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
     }
 
-    public void RandomDirection()
+    void Movement()
     {
-        Vector2 randomDirection = Random.insideUnitCircle;
-        direction = new Vector3(randomDirection.x,0,randomDirection.y).normalized;
+        FacePlayer();
+        rb.position += transform.forward * moveSpeed * Time.deltaTime;
+        anim.SetFloat("Move", moveSpeed);
     }
 
-    public void Rotate()
+    void DieWithBoss()
     {
-        float xDistance = (transform.position.x + direction.x) - transform.position.x;
-        float zDistance = (transform.position.z + direction.z) - transform.position.z;
-        float angle = Mathf.Atan2(xDistance, zDistance) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0,angle,0)), Time.deltaTime * turnSpeed);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "wellwall")
-        {
-            direction *= -1;
-        }
-    }
-
-    public void FlagListener()
-    {
-        flag.GetComponent<HealthBoss>().deathEvent -= FlagListener;
-        state = new OniAttacking(this, 1);
-    }
-
-    public void ChangeState(OniInterface newState)
-    {
-        state = newState;
+        myHealth.Die();
+        boss.GetComponent<HealthBoss>().deathEvent -= DieWithBoss;
     }
 }

@@ -8,27 +8,24 @@ public class OniAttacking : OniInterface
     public OniAttacking(Oni managerRef)
     {
         manager = managerRef;
+        RandomlyChangeColor();
         StateStart();
     }
 
     public OniAttacking(Oni managerRef, int forceAnimState)
     {
         manager = managerRef;
-        manager.anim.SetInteger("AnimState", 4);
+        manager.FacePlayer();
+        manager.anim.SetInteger("AnimState", forceAnimState);
     }
 
     public void StateStart()
     {
-        int r = Random.Range(1, 11);
-        Debug.Log(r);
-        if (r > 5)
-            manager.myHealth.bright = !manager.myHealth.bright;
-
         manager.FacePlayer();
         if (manager.GetComponent<HealthBoss>().currentHealth <= manager.GetComponent<HealthBoss>().maxHealth / 2)
-            manager.anim.SetInteger("AnimState", 3);// Random.Range(1, 4));
+            manager.anim.SetInteger("AnimState", Random.Range(1, 4));
         else
-            manager.anim.SetInteger("AnimState", 3);//Random.Range(1, 3));
+            manager.anim.SetInteger("AnimState", Random.Range(1, 3));
     }
 
     public void StateUpdate()
@@ -45,5 +42,12 @@ public class OniAttacking : OniInterface
                 manager.ChangeState(new OniPassive(manager));
             }
         }
+    }
+
+    void RandomlyChangeColor()
+    {
+        int r = Random.Range(1, 11);
+        if (r > 5)
+            manager.myHealth.bright = !manager.myHealth.bright;
     }
 }
