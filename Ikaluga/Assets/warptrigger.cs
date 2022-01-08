@@ -52,7 +52,8 @@ public class warptrigger : MonoBehaviour
                     bossNameText.text = elyotBossText;
                     break;
                 case SceneEnum.JustenBoss:
-                    //this doesnt exist yet
+                    warpCanvas.SetActive(true);
+                    bossNameText.text = justenBossText;
                     break;
             }
         }
