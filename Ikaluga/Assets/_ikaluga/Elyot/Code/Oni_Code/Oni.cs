@@ -55,7 +55,7 @@ public class Oni : MonoBehaviour
     {
         stateChangeTimer = 5f;
         state = new OniAttacking(this, 4);
-        Instantiate(flag, transform.position + new Vector3(0, 6, 0), Quaternion.identity);
+        Instantiate(flag, transform.position + new Vector3(0, 10, 0), Quaternion.identity, this.transform);
         myHealth.phaseTwo -= PhaseTwoDance;
         foreach (Minion m in minions)
         {
