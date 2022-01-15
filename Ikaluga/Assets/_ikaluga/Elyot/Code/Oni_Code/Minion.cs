@@ -16,6 +16,7 @@ public class Minion : MonoBehaviour
     public float moveSpeed;
     public float turnSpeed = 1;
     public float attackTimer = 5f;
+    public float attackSpeed;
     public bool coroutine = false;
     public bool delayUpdate = true;
 
@@ -24,6 +25,8 @@ public class Minion : MonoBehaviour
     {
         ph = FindObjectOfType<HealthPlayer>();
         myHealth = this.GetComponent<HealthBoss>();
+
+        attackTimer = 5;
 
         anim = oni.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -82,7 +85,7 @@ public class Minion : MonoBehaviour
         coroutine = true;
         yield return new WaitForSeconds(3f);
         anim.SetInteger("AnimState", 0);
-        attackTimer = 5f;
+        attackTimer = attackSpeed;
         coroutine = false;
     }
 
