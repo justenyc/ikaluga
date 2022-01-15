@@ -40,7 +40,7 @@ public class Minion : MonoBehaviour
 
     IEnumerator UpdateDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(Random.Range(0.25f, 1.1f));
         delayUpdate = false;
         anim.SetInteger("AnimState", 0);
     }
@@ -50,14 +50,8 @@ public class Minion : MonoBehaviour
     {
         if (!delayUpdate)
         {
-            if (attackTimer > 0)
+            if (attackTimer <= 0)
             {
-                attackTimer -= Time.deltaTime;
-                Movement();
-            }
-            else if (attackTimer <= 0)
-            {
-                int r = Random.Range(1, 4);
                 /*if (Vector3.Distance(ph.transform.position, transform.position) < 10f)
                 {
                     anim.SetInteger("AnimState", r);
@@ -74,6 +68,11 @@ public class Minion : MonoBehaviour
                     StartCoroutine(DelayNextAttack());
                 }
                 anim.SetInteger("AnimState", 1);
+            }
+            else if (attackTimer > 0)
+            {
+                attackTimer -= Time.deltaTime;
+                Movement();
             }
         }
     }
